@@ -13,7 +13,7 @@ class Db:
             json.dump(clientsList, arquivo, indent = 4)
 
         if tipo == "empresa":
-            nameArq = pesoa.cnpj
+            nameArq = pessoa.cnpj
         else:
             nameArq = pessoa.cpf
 
