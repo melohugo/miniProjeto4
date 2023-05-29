@@ -12,11 +12,13 @@ class Cliente(Pessoa):
     def __init__(self, nome, endereco, telefone, senha, cpf):
         super().__init__(nome, endereco, telefone, senha)
         self.cpf = cpf
+        self.tipo = "Pessoa fisica"
 
 class Empresa(Pessoa):
     def __init__(self, nome, endereco, telefone, senha, cnpj):
         super().__init__(nome, endereco, telefone, senha)
         self.cnpj = cnpj
+        self.tipo = "Empresa"
 
 class Gerente(Pessoa):
      def __init__(self, nome, endereco, telefone, senha, id):
