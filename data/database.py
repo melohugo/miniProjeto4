@@ -9,13 +9,13 @@ class Db:
 
         clientsList.append(pessoaConvert)
         
-        with open("clentes.json", "a") as arquivo:
+        with open("clientes.json", "a") as arquivo:
             json.dump(clientsList, arquivo, indent = 4)
 
         if tipo == "empresa":
             nameArq = pessoa.cnpj
         else:
-            nameArq = pessoa.cpf
+            nameArq = pessoa.nome + pessoa.cpf
 
         with open(nameArq + ".json", "w") as arquivo:
             json.dump(pessoaConvert, arquivo, indent = 4)
