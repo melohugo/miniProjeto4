@@ -1,6 +1,8 @@
-import tkinter as tk                
-from tkinter import font as tkfont
+import tkinter as tk               
 from tkinter import *
+from tkinter import font as tkfont
+from interfaceGerente import *
+
 
 
 class SampleApp(tk.Tk):
@@ -11,12 +13,13 @@ class SampleApp(tk.Tk):
         self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
 
         container = tk.Frame(self)
-        container.pack(side="top", fill="both", expand=True)
+        container.pack(side="top", fill="both", expand= True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
+       
 
         self.frames = {}
-        for F in (StartPage, MenuPage, PageTwo):
+        for F in (StartPage, MenuPage, ManagerPage, GerenciaPage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -43,11 +46,32 @@ class StartPage(tk.Frame):
         heading_label = tk.Label(self,
                                  text= 'Banco HCQ',
                                  font= ('garamond', 45, 'bold'),
+                                 fg= 'white',
                                  background= '#3d3d5c')
         heading_label.pack(pady=25)
 
         space_label = tk.Label(self, height =4, bg='#3d3d5c')
         space_label.pack()
+
+        nome_label = tk.Label(self, 
+                               text='Digite seu CPF/CNPJ',
+                               font=('garamond',13),
+                               bg='#3d3d5c',
+                               fg='white')
+        
+        nome_label.pack(pady = 10)
+
+        meuNome = tk.StringVar()
+        caixa_entrada_nome = tk.Entry(self, 
+                                       textvariable= meuNome,
+                                       font=('garamond',12),
+                                       width=22
+                                       )
+        
+        caixa_entrada_nome.focus_set()
+        caixa_entrada_nome.pack(ipady = 7)
+
+    
 
         senha_label = tk.Label(self, 
                                text='Digite sua senha',
@@ -56,12 +80,13 @@ class StartPage(tk.Frame):
                                fg='white')
         
         senha_label.pack(pady = 10)
-
+        
         minhaSenha = tk.StringVar()
         caixa_entrada_senha = tk.Entry(self, 
                                        textvariable= minhaSenha,
                                        font=('garamond',12),
-                                       width=22)
+                                       width=22
+                                       )
         
         caixa_entrada_senha.focus_set()
         caixa_entrada_senha.pack(ipady = 7)
@@ -86,18 +111,34 @@ class StartPage(tk.Frame):
                                  command = checaSenha,
                                  relief='raised',
                                  borderwidth= 3,
-                                 width = 25,
-                                 height = 3)
+                                 width = 24,
+                                 height = 2)
         enter_button.pack(pady=10)
 
         senhaErrada_label = tk.Label(self,
                                       text='',
                                       font=('garamond',13),
                                       fg='white',
-                                      bg='#33334d',
+                                      bg = '#3d3d5c',
                                       anchor='n')
         
-        senhaErrada_label.pack(fill='both', expand= True)
+        senhaErrada_label.pack()
+        
+        space_label = tk.Label(self, height =15, bg = '#3d3d5c')
+        space_label.pack()
+
+        def Gerenciar():
+            controller.show_frame('ManagerPage')
+
+        enter_button = tk.Button(self,
+                                 text= 'Gerente',
+                                 relief='raised',
+                                 command = Gerenciar,
+                                 borderwidth= 3,
+                                 width = 24,
+                                 height = 2)
+        enter_button.pack(pady=10, expand = True)
+
 
       
 
@@ -112,47 +153,66 @@ class MenuPage(tk.Frame):
         heading_label = tk.Label(self,
                                  text= 'Banco HCQ',
                                  font= ('garamond', 45, 'bold'),
+                                 fg= 'white',
                                  background= '#3d3d5c')
         heading_label.pack(pady=25)
 
-        menu_label= tk.Label(self,
-                                        text='Main Menu',
-                                        font=('garamond',13),
-                                        fg='white',
-                                        bg='#3d3d5c')
-        menu_label.pack()
-
         selecao_label= tk.Label(self,
                                         text='Selecione uma acao',
-                                        font=('garamond',13),
+                                        font=('garamond',25),
                                         fg='white',
-                                        bg='#3d3d5c',
-                                        anchor='w')
+                                        bg='#3d3d5c'
+                                        )
         selecao_label.pack(fill='x')
-
-        button_frame = tk.Frame(self,bg='#33334d')
-        button_frame.pack(fill='both',expand=True)
-
         def sair():
             controller.show_frame('StartPage')
+
+        #button_frame = tk.Frame(self,bg='#33334d')
+        #button_frame.pack(fill='both',expand=True)
+
        
-        sair_button= tk.Button(button_frame,
+
+        depositar_button= tk.Button(self,
+                                        text='Depositar',
+                                        command=sair,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=40,
+                                        height=5
+                                        )
+        depositar_button.pack(pady=5)
+
+        space_label = tk.Label(self, height =4, bg='#3d3d5c')
+        space_label.pack()
+
+        sacar_button= tk.Button(self,
+                                        text='Sacar',
+                                        command=sair,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=40,
+                                        height=5
+                                        )
+        sacar_button.pack(pady=5)
+        
+        space_label = tk.Label(self, height =4, bg='#3d3d5c')
+        space_label.pack()
+
+
+        sair_button= tk.Button(self,
                                         text='Sair',
                                         command=sair,
                                         relief='raised',
                                         borderwidth=3,
                                         width=40,
-                                        height=5)
-        sair_button.grid(row=3,column=20,pady=5)
+                                        height=5
+                                        )
+        sair_button.pack(pady=5)
 
+        space_label = tk.Label(self, height =4, bg='#3d3d5c')
+        space_label.pack()
 
-class PageTwo(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-       
-
+    
 
 if __name__ == "__main__":
     app = SampleApp()

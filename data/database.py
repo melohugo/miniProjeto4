@@ -45,7 +45,7 @@ class Db:
         pedidos.append(dados)
 
         with open("pedidosDeCredito.json", "a") as arquivo:
-            json.dump(pedidos, arquivos, indent = 4)
+            json.dump(pedidos, arquivo, indent = 4)
 
     def listar(key):
         with open(key + ".json") as arquivo:
