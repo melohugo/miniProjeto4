@@ -1,12 +1,16 @@
-class Pessoa():
-    def __init__(self, nome, endereco, telefone, senha):
+class Cliente():
+    def __init__(self, tipo, nome, key, endereco, telefone, senha):
         self.nome = nome
+        self.tipo = tipo
+        self.cpf_cnpj = key
         self.endereco = endereco
         self.telefone = telefone
-        self.senha = senha
+        self.saldo = 0.00
 
-    def solCredito():
-        pass
+class Senha():
+    def __init__(self, key, senha)
+        self.cpf_cnpj = key
+        self.senha = senha
 
 class Cliente(Pessoa):
     def __init__(self, nome, endereco, telefone, senha, cpf):
@@ -19,7 +23,7 @@ class Empresa(Pessoa):
         self.cnpj = cnpj
 
 class Gerente(Pessoa):
-     def __init__(self, nome, endereco, telefone, senha, id):
+     def __init__(self, nome, endereco, telefone, senha, idG):
         super().__init__(nome, endereco, telefone, senha)
-        self.id = id
+        self.id = idG
 
