@@ -5,7 +5,7 @@ from tkinter import *
 class ManagerPage(tk.Frame):
 
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent, bg= "#3d3d5c")
+        tk.Frame.__init__(self, parent, bg= "#313d5a")
         self.controller = controller
 
         self.controller.title('Banco CHQ')
@@ -13,18 +13,18 @@ class ManagerPage(tk.Frame):
 
         heading_label = tk.Label(self,
                                  text= 'Banco HCQ',
-                                 font= ('garamond', 45, 'bold'),
+                                 font= ('Calisto MT', 45, 'bold'),
                                  fg= 'white',
-                                 background= '#3d3d5c')
+                                 background= '#313d5a')
         heading_label.pack(pady=25)
 
-        space_label = tk.Label(self, height =4, bg='#3d3d5c')
+        space_label = tk.Label(self, height =4, bg='#313d5a')
         space_label.pack()
 
         nome_label = tk.Label(self, 
                                 text='Digite seu ID',
-                                font=('garamond',13),
-                                bg='#3d3d5c',
+                                font=('Calisto MT',13),
+                                bg='#313d5a',
                                 fg='white')
             
         nome_label.pack(pady = 10)
@@ -32,7 +32,7 @@ class ManagerPage(tk.Frame):
         meuNome = tk.StringVar()
         caixa_entrada_nome = tk.Entry(self, 
                                         textvariable= meuNome,
-                                        font=('garamond',12),
+                                        font=('Calisto MT',12),
                                         width=22
                                         )
             
@@ -43,8 +43,8 @@ class ManagerPage(tk.Frame):
 
         senha_label = tk.Label(self, 
                                 text='Digite sua senha',
-                                font=('garamond',13),
-                                bg='#3d3d5c',
+                                font=('Calisto MT',13),
+                                bg='#313d5a',
                                 fg='white')
             
         senha_label.pack(pady = 10)
@@ -52,7 +52,7 @@ class ManagerPage(tk.Frame):
         minhaSenha = tk.StringVar()
         caixa_entrada_senha = tk.Entry(self, 
                                         textvariable= minhaSenha,
-                                        font=('garamond',12),
+                                        font=('Calisto MT',12),
                                         width=22
                                         )
             
@@ -85,19 +85,19 @@ class ManagerPage(tk.Frame):
 
         senhaErrada_label = tk.Label(self,
                                         text='',
-                                        font=('garamond',13),
+                                        font=('Calisto MT',13),
                                         fg='white',
-                                        bg = '#3d3d5c',
+                                        bg = '#313d5a',
                                         anchor='n')
             
         senhaErrada_label.pack()
             
-        space_label = tk.Label(self, height =15, bg = '#3d3d5c')
+        space_label = tk.Label(self, height =15, bg = '#313d5a')
         space_label.pack()
 
 
         def __init__(self, parent, controller):
-            tk.Frame.__init__(self, parent, bg= '#3d3d5c')
+            tk.Frame.__init__(self, parent, bg= '#313d5a')
             self.controller = controller
 
             button_frame = tk.Frame(self,bg='#33334d')
@@ -120,7 +120,7 @@ class ManagerPage(tk.Frame):
 class GerenciaPage(tk.Frame):
      
       def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent, bg= "#3d3d5c")
+        tk.Frame.__init__(self, parent, bg= "#313d5a")
         self.controller = controller
 
         self.controller.title('Banco CHQ')
@@ -128,18 +128,18 @@ class GerenciaPage(tk.Frame):
 
         heading_label = tk.Label(self,
                                  text= 'Banco HCQ',
-                                 font= ('garamond', 45, 'bold'),
+                                 font= ('Calisto MT', 45, 'bold'),
                                  fg='white',
-                                 background= '#3d3d5c')
+                                 background= '#313d5a')
         heading_label.pack(pady=25)
 
-        space_label = tk.Label(self, height =4, bg='#3d3d5c')
+        space_label = tk.Label(self, height =4, bg='#313d5a')
         space_label.pack()
 
         nome_label = tk.Label(self, 
                                 text='Selecione uma ação',
-                                font=('garamond',25),
-                                bg='#3d3d5c',
+                                font=('Calisto MT',25),
+                                bg='#313d5a',
                                 fg='white')
             
         nome_label.pack(pady = 10)
@@ -157,7 +157,7 @@ class GerenciaPage(tk.Frame):
                                         )
         adicionar_button.pack(pady=5)
         
-        space_label = tk.Label(self, height =1, bg='#3d3d5c')
+        space_label = tk.Label(self, height =1, bg='#313d5a')
         space_label.pack()
 
         remover_button= tk.Button(self,
@@ -170,7 +170,7 @@ class GerenciaPage(tk.Frame):
                                         )
         remover_button.pack(pady=5)
 
-        space_label = tk.Label(self, height =1, bg='#3d3d5c')
+        space_label = tk.Label(self, height =1, bg='#313d5a')
         space_label.pack()
 
 
@@ -184,7 +184,7 @@ class GerenciaPage(tk.Frame):
                                         )
         checarCred_button.pack(pady=5)
         
-        space_label = tk.Label(self, height =1, bg='#3d3d5c')
+        space_label = tk.Label(self, height =1, bg='#313d5a')
         space_label.pack()
 
 
@@ -199,7 +199,7 @@ class GerenciaPage(tk.Frame):
                                         )
         sair_button.pack(pady=5)
 
-        space_label = tk.Label(self, height =1, bg='#3d3d5c')
+        space_label = tk.Label(self, height =1, bg='#313d5a')
         space_label.pack()
      
 
