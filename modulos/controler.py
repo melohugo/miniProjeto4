@@ -1,6 +1,6 @@
 from data.database import Banquinho
-from operacoes import *
-from modulos import *
+from modulos.operacoes import *
+from modulos.modulos import *
 
 class Controle():
     def __init__():
@@ -16,7 +16,8 @@ class Controle():
             else:
                 return False
 
-    def addPessoa(self, nome, key, endereco, telefone, senha, tipo)
+    def addPessoa(self, nome, key, endereco, telefone, senha, tipo):
+
         cliente = Cliente(tipo, nome, key, endereco, telefone)
 
         clienteConvert = vars(cliente)
@@ -27,7 +28,7 @@ class Controle():
         
         self.banquinho.addClient(clienteConvert, chave)
 
-    def rmPessoa(self, key)
+    def rmPessoa(self, key):
         banquinho.rmClient(key)
         
 
