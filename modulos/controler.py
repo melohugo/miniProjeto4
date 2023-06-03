@@ -1,10 +1,11 @@
 from data.database import Banquinho
+import json
 from modulos.operacoes import *
 from modulos.modulos import *
 
 class Controle():
-    def __init__():
-        banquinho = Banquinho()
+    def __init__(self):
+        self.banquinho = Banquinho()
 
     def verifCpf(cpf, key):
         with open("senhas.json") as arquivo:
@@ -29,7 +30,7 @@ class Controle():
         self.banquinho.addClient(clienteConvert, chave)
 
     def rmPessoa(self, key):
-        banquinho.rmClient(key)
+        self.banquinho.rmClient(key)
         
 
     def sacar(self, quantidade, key):

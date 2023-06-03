@@ -18,7 +18,7 @@ class Banquinho:
         '''criando arquivo individual'''
         nomeArq = pessoa.cpf_cnpj
 
-        with open(nameArq + ".json", "w") as arquivo:
+        with open(nomeArq + ".json", "w") as arquivo:
             json.dump(pessoaConvert, arquivo, indent = 4)
 
         '''arquivo de senhas'''
