@@ -1,5 +1,8 @@
 from data.database import Banquinho
+<<<<<<< Updated upstream
 import json
+=======
+>>>>>>> Stashed changes
 from modulos.operacoes import *
 from modulos.modulos import *
 
