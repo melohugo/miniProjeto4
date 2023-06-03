@@ -1,9 +1,10 @@
 import tkinter as tk               
 from tkinter import *
 from tkinter import font as tkfont
+from modulos.controler import *
 from interfaceGerente import *
 
-
+controle = Controle()
 
 class SampleApp(tk.Tk):
 
@@ -65,9 +66,9 @@ class StartPage(tk.Frame):
         
         nome_label.pack(pady = 10)
 
-        meuNome = tk.StringVar()
+        meuCPF = tk.StringVar()
         caixa_entrada_nome = tk.Entry(self, 
-                                       textvariable= meuNome,
+                                       textvariable= meuCPF,
                                        font=('Calisto MT',12),
                                        width=22
                                        )
@@ -102,8 +103,10 @@ class StartPage(tk.Frame):
         caixa_entrada_senha.bind('<FocusIn>', handle_focus_in)
 
         def checaSenha():
-            if minhaSenha.get() == '1234':     
-               #criar funcao que relaciona senha e id do cliente
+            senha = minhaSenha.get() 
+            cpf = meuCPF.get()
+            if controle.verifCpf(cpf, senha) == True:     
+               
                minhaSenha.set('')
                senhaErrada_label['text']=''
                controller.show_frame('MenuPage')
