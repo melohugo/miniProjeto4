@@ -1,0 +1,32 @@
+[
+    {
+        "nome": "Jo\u00e3o",
+        "tipo": "Pessoa F\u00edsica",
+        "cpf_cnpj": "123456789",
+        "endereco": "Rua A",
+        "telefone": "1234567890",
+        "saldo": 0.0,
+        "operacoes": [],
+        "senha": "senha123"
+    },
+    {
+        "nome": "Jo\u00e3o",
+        "tipo": "Pessoa F\u00edsica",
+        "cpf_cnpj": "123456789",
+        "endereco": "Rua A",
+        "telefone": "1234567890",
+        "saldo": 0.0,
+        "operacoes": [],
+        "senha": "senha123"
+    },
+    {
+        "nome": "Joao",
+        "tipo": "Pessoa Fisica",
+        "cpf_cnpj": "123456789",
+        "endereco": "Rua A",
+        "telefone": "1234567890",
+        "saldo": 0.0,
+        "operacoes": [],
+        "senha": "senha123"
+    }
+]

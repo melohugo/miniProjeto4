@@ -178,14 +178,24 @@ class MenuPage(tk.Frame):
         def sair():
             controller.show_frame('StartPage')
 
-        #button_frame = tk.Frame(self,bg='#33334d')
-        #button_frame.pack(fill='both',expand=True)
+       
+        win = Tk()
+        win.geometry('750x250')
+        
+        def deposito():
+            controle.depositar(200.00 , "123456789")
+            top = Toplevel(win)
+            top.geometry("750x250")
+            top.title('Deposito')
+            Label(top, text= 'Deposito de 200 reais', font= ("Calisto MT", 15)).place(x=150, y=80)
+            
+            
 
        
 
         depositar_button= tk.Button(self,
                                         text='Depositar',
-                                        command=sair,
+                                        command=deposito,
                                         relief='raised',
                                         borderwidth=3,
                                         width=40,

@@ -10,22 +10,22 @@ class Banquinho:
 
         ##carregando lista de clientes e atualizando arquivo##
 
-        if os.path.isfile("data/clientes.json"):
-            with open("data/clientes.json", "r") as arquivo:
+        if os.path.isfile("clientes.json"):
+            with open("clientes.json", "r") as arquivo:
                 clientsList = json.load(arquivo)
         else:
             clientsList = []
 
         clientsList.append(pessoaConvert)
 
-        with open("data/clientes.json", "w") as arquivo:
+        with open("clientes.json", "w") as arquivo:
             json.dump(clientsList, arquivo, indent=4)
 
         ##criando arquivo individual##
 
         nomeArq = pessoa.cpf_cnpj
 
-        with open("data/" + nomeArq + ".json", "w") as arquivo:
+        with open( nomeArq + ".json", "w") as arquivo:
             json.dump(pessoaConvert, arquivo, indent=4)
 
         ##arquivo de senhas##
@@ -38,14 +38,14 @@ class Banquinho:
 
         senhas.append(senhaConvert)
 
-        with open("data/senhas.json", "w") as arquivo:
+        with open("senhas.json", "w") as arquivo:
             json.dump(senhas, arquivo, indent = 4)
 
     def rmClient(self, key):
 
         ##deletando cliente##
 
-        with open("data/clientes.json") as arquivo:
+        with open("clientes.json") as arquivo:
             clientsList = json.load(arquivo)
         
         for client in clientsList:
@@ -53,10 +53,10 @@ class Banquinho:
                 if client['saldo'] == 0.00:
                     clientsList.remove(client)
 
-                    with open("data/clientes.json", "w") as arquivo:
+                    with open("clientes.json", "w") as arquivo:
                         json.dump(clientsList, arquivo, indent=4)
 
-                    os.remove("data/" + key + ".json")
+                    os.remove( key + ".json")
 
                     break
                 else:
@@ -65,7 +65,7 @@ class Banquinho:
 
         ##deletando senha##
 
-        with open("data/senhas.json") as arquivo:
+        with open("senhas.json") as arquivo:
             senhasList = json.load(arquivo)
 
         for senha in senhasList:
@@ -73,7 +73,7 @@ class Banquinho:
                 senhasList.remove(senha)
                 break
 
-        with open("data/senhas.json", "w") as arquivo:
+        with open("senhas.json", "w") as arquivo:
             json.dump(senhasList, arquivo, indent = 4)
 
     def opBancaria(self, operacao, key):
@@ -86,7 +86,7 @@ class Banquinho:
             op = operacao.valor
 
         ##carregando arquivo e atualizando saldo##
-        with open("data/" + key + ".json") as arquivo:
+        with open( key + ".json") as arquivo:
             cliente = json.load(arquivo)
 
         saldo = cliente['saldo'] + op
@@ -95,14 +95,14 @@ class Banquinho:
         ##adicionando operacao na lista de operacoes##
         cliente['operacoes'].append(vars(operacao))
 
-        with open("data/" + key + ".json", "w") as arquivo:
+        with open( key + ".json", "w") as arquivo:
             json.dump(cliente, arquivo, indent=4)
 
     def credito(self, quandidade, key):
 
         ##carregando arquivo##
 
-        with open("data/clientes.json") as arquivo:
+        with open("clientes.json") as arquivo:
             clientsList = json.load(arquivo)
 
         ##pegando dados do cliente##
@@ -123,8 +123,8 @@ class Banquinho:
 
         ##carregando/criando arquivo dos pedidos##
 
-        if os.path.isfile("data/pedidosDeCredito.json"):
-            with open("data/pedidosDeCredito.json", "r") as arquivo:
+        if os.path.isfile("pedidosDeCredito.json"):
+            with open("pedidosDeCredito.json", "r") as arquivo:
                 pedidos = json.load(arquivo)
         else:
             pedidos = []
@@ -133,11 +133,11 @@ class Banquinho:
 
         pedidos.append(solicitacaoConvert)
 
-        with open("data/pedidosDeCredito.json", "w") as arquivo:
+        with open("pedidosDeCredito.json", "w") as arquivo:
             json.dump(pedidos, arquivo, indent=4)
 
     def listar(self, key):
-        with open("data/" + key + ".json") as arquivo:
+        with open(key + ".json") as arquivo:
             op = json.load(arquivo)
 
         print(json.dumps(op, indent=4))
@@ -146,7 +146,7 @@ class Banquinho:
 
         ##carregando arquivo das senhas##
 
-        with open("data/senhas.json") as arquivo:
+        with open("senhas.json") as arquivo:
             senha = json.load(arquivo)
 
         ##fazendo confirmação de senha e cpf/cnpj##

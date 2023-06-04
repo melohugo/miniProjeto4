@@ -4,7 +4,7 @@ from controler import Controle
 controle = Controle()
 
 # Teste da função addPessoa
-controle.addPessoa("João", "123456789", "Rua A", "1234567890", "senha123", "Pessoa Física")
+controle.addPessoa("Joao", "123456789", "Rua A", "1234567890", "senha123", "Pessoa Fisica")
 
 # Teste da função verifCpf
 cpf_valido = "123456789"
