@@ -13,8 +13,6 @@ class SampleApp(tk.Tk):
 
         self.fonte = ("Calisto MT", 45, 'bold')
 
-        self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
-
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand= True)
         container.grid_rowconfigure(0, weight=1)
@@ -179,19 +177,38 @@ class MenuPage(tk.Frame):
             controller.show_frame('StartPage')
 
        
-        win = Tk()
-        win.geometry('750x250')
-        
         def deposito():
-            controle.depositar(200.00 , "123456789")
-            top = Toplevel(win)
-            top.geometry("750x250")
-            top.title('Deposito')
-            Label(top, text= 'Deposito de 200 reais', font= ("Calisto MT", 15)).place(x=150, y=80)
+            valorDep = tk.StringVar()
+            caixa_entrada_valor = tk.Entry(self, 
+                                       textvariable= valorDep,
+                                       font=('Calisto MT',12),
+                                       width=22
+                                       )
+        
+            caixa_entrada_valor.focus_set()
+            caixa_entrada_valor.pack(ipady = 7)
+           
             
+            def dep():
+                valor = valorDep.get()
+                controle.depositar(float(valor), "123456789")
+                top = Toplevel()
+                top.geometry("275x75")
+                top.title('Deposito')
+                Label(top, text= f'Deposito de R${valor},00 reais', font= ("Calisto MT", 15)).place(x=8, y=25)
+                
             
-
-       
+            button = tk.Button(self,
+                               
+                                 bg = "#cbc5ea",
+                                 text= 'Enter',
+                                 command = dep,
+                                 relief='raised',
+                                 borderwidth= 3,
+                                 width = 22,
+                                 height = 2)
+            button.pack(pady=10)
+            
 
         depositar_button= tk.Button(self,
                                         text='Depositar',
@@ -205,10 +222,51 @@ class MenuPage(tk.Frame):
 
         space_label = tk.Label(self, height =1, bg='#183642')
         space_label.pack()
+        
+        def sacar():
+            controle.sacar(200.00, '123456789')
+            top = Toplevel()
+            top.geometry("200x75")
+            top.title('Saque')
+            Label(top, text= 'Saque de 200 reais', font= ("Calisto MT", 15)).place(x=8, y=25)
+            
+        def sacar():
+            valorSac = tk.StringVar()
+            caixa_entrada_valor = tk.Entry(self, 
+                                       textvariable= valorSac,
+                                       font=('Calisto MT',12),
+                                       width=22
+                                       )
+        
+            caixa_entrada_valor.focus_set()
+            caixa_entrada_valor.pack(ipady = 7)
+           
+            
+            def saqueValor():
+                valor = valorSac.get()
+                controle.depositar(float(valor), "123456789")
+                top = Toplevel()
+                top.geometry("275x75")
+                top.title('Saque')
+                Label(top, text= f'Saque de R${valor},00 reais', font= ("Calisto MT", 15)).place(x=8, y=25)
+                
+            
+            button = tk.Button(self,
+                               
+                                 bg = "#cbc5ea",
+                                 text= 'Enter',
+                                 command = saqueValor,
+                                 relief='raised',
+                                 borderwidth= 3,
+                                 width = 22,
+                                 height = 2)
+            button.pack(pady=10)
+            
+            
 
         sacar_button= tk.Button(self,
                                         text='Sacar',
-                                        command=sair,
+                                        command=sacar,
                                         relief='raised',
                                         borderwidth=3,
                                         width=40,
@@ -218,16 +276,52 @@ class MenuPage(tk.Frame):
         
         space_label = tk.Label(self, height =1, bg='#183642')
         space_label.pack()
+        
+    
+        def solCred():
+            valorCred = tk.StringVar()
+            caixa_entrada_valor = tk.Entry(self, 
+                                       textvariable= valorCred,
+                                       font=('Calisto MT',12),
+                                       width=22
+                                       )
+        
+            caixa_entrada_valor.focus_set()
+            caixa_entrada_valor.pack(ipady = 7)
+           
+            
+            def credito():
+                valor = valorCred.get()
+                controle.depositar(float(valor), "123456789")
+                top = Toplevel()
+                top.geometry("275x75")
+                top.title('Credito')
+                Label(top, text= f'Pedido de credito de R${valor},00 reais', font= ("Calisto MT", 15)).place(x=8, y=25)
+                
+            
+            button = tk.Button(self,
+                               
+                                 bg = "#cbc5ea",
+                                 text= 'Enter',
+                                 command = credito,
+                                 relief='raised',
+                                 borderwidth= 3,
+                                 width = 22,
+                                 height = 2)
+            button.pack(pady=10)
+            
+            
+        
 
-        pagProg_button= tk.Button(self,
-                                        text='Pagamento programado',
-                                        command=sair,
+        solCredito_button= tk.Button(self,
+                                        text='Solicitar credito',
+                                        command=solCred,
                                         relief='raised',
                                         borderwidth=3,
                                         width=40,
                                         height=3
                                         )
-        pagProg_button.pack(pady=5)
+        solCredito_button.pack(pady=5)
         
         space_label = tk.Label(self, height =1, bg='#183642')
         space_label.pack()

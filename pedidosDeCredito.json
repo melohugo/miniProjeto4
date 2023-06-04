@@ -1,14 +1,7 @@
 [
     {
-        "nome": "Jo\u00e3o",
-        "tipo": "Pessoa F\u00edsica",
-        "cpf_cnpj": "123456789",
-        "saldo": 0.0,
-        "pedidoDeCredito": 1000000.0
-    },
-    {
-        "nome": "Jo\u00e3o",
-        "tipo": "Pessoa F\u00edsica",
+        "nome": "Joao",
+        "tipo": "Pessoa Fisica",
         "cpf_cnpj": "123456789",
         "saldo": 0.0,
         "pedidoDeCredito": 1000000.0

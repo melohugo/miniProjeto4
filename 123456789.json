@@ -4,35 +4,11 @@
     "cpf_cnpj": "123456789",
     "endereco": "Rua A",
     "telefone": "1234567890",
-    "saldo": 1300.0,
+    "saldo": 100.0,
     "operacoes": [
         {
             "tipo": "Saque",
             "valor": 100.0
-        },
-        {
-            "tipo": "Deposito",
-            "valor": 200.0
-        },
-        {
-            "tipo": "Deposito",
-            "valor": 200.0
-        },
-        {
-            "tipo": "Deposito",
-            "valor": 200.0
-        },
-        {
-            "tipo": "Deposito",
-            "valor": 200.0
-        },
-        {
-            "tipo": "Deposito",
-            "valor": 200.0
-        },
-        {
-            "tipo": "Deposito",
-            "valor": 200.0
         },
         {
             "tipo": "Deposito",
