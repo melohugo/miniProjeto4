@@ -1,7 +1,7 @@
 import tkinter as tk                
 from tkinter import font as tkfont
 from tkinter import *
-#from modulos.controler import *
+from controler import *
 
 controle = Controle()
 

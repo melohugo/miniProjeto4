@@ -1,7 +1,7 @@
 import tkinter as tk               
 from tkinter import *
 from tkinter import font as tkfont
-from modulos.controler import *
+from controler import *
 from interfaceGerente import *
 
 

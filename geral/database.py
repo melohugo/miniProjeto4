@@ -1,7 +1,7 @@
 import json
 import os
-from modulos.cliente import *
-from modulos.operacoes import *
+from cliente import *
+from operacoes import *
 
 class Banquinho:
     def addClient(self, pessoa, senha):

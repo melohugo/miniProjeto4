@@ -1,7 +1,7 @@
 import json
-from data.database import Banquinho
-from modulos.cliente import *
-from modulos.operacoes import *
+from database import Banquinho
+from cliente import *
+from operacoes import *
 
 class Controle:
     def __init__(self):
