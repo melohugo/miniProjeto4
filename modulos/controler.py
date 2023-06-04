@@ -1,44 +1,31 @@
+import json
 from data.database import Banquinho
-from modulos.operacoes import *
 from modulos.modulos import *
+from modulos.operacoes import *
 
-class Controle():
-    def __init__():
-        banquinho = Banquinho()
+class Controle:
+    def __init__(self):
+        self.banquinho = Banquinho()
 
-    def verifCpf(cpf, key):
-        with open("senhas.json") as arquivo:
-            senha = json.load(arquivo)
-
-        for verificador in senha:
-            if verificador['senha'] == key and verificador['cpf_cnpj'] == cpf:
-                return True
-            else:
-                return False
+    def verifCpf(self, cpf, key):
+        return self.banquinho.verificador(cpf, key)
 
     def addPessoa(self, nome, key, endereco, telefone, senha, tipo):
-
-        cliente = Cliente(tipo, nome, key, endereco, telefone)
-
-        clienteConvert = vars(cliente)
-
+        cliente = Cliente(tipo, nome, key, endereco, telefone, senha)
         chave = Senha(key, senha)
-
-        chaveConvert = vars(chave)
-        
-        self.banquinho.addClient(clienteConvert, chave)
+        self.banquinho.addClient(cliente, chave)
 
     def rmPessoa(self, key):
-        banquinho.rmClient(key)
-        
+        self.banquinho.rmClient(key)
 
     def sacar(self, quantidade, key):
         operacao = Saque(quantidade)
-        operacaoConvert = vars(operacao)
-        self.banquinho.opBancaria(operacaoConvert, key)
+        self.banquinho.opBancaria(operacao, key)
 
     def depositar(self, quantidade, key):
         operacao = Deposito(quantidade)
-        operacaoConvert = vars(operacao)
-        self.banquinho.opBancaria(operacaoConvert, key)
+        self.banquinho.opBancaria(operacao, key)
+
+    def solCredito(self, quantidade, key):
+        self.banquinho.credito(quantidade, key)
 
