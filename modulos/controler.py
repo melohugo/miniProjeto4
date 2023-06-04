@@ -1,6 +1,6 @@
 import json
 from data.database import Banquinho
-from modulos.modulos import *
+from modulos.cliente import *
 from modulos.operacoes import *
 
 class Controle:

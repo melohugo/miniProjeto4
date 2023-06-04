@@ -1,6 +1,6 @@
 import json
 import os
-from modulos.modulos import *
+from modulos.cliente import *
 from modulos.operacoes import *
 
 class Banquinho:
