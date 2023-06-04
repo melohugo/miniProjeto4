@@ -1,21 +1,9 @@
 import json
 from data.database import Banquinho
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-import json
-=======
->>>>>>> Stashed changes
-from modulos.operacoes import *
->>>>>>> 8767b513ef33111ad011b289c1bb740819bdabf3
 from modulos.modulos import *
 from modulos.operacoes import *
 
-<<<<<<< HEAD
 class Controle:
-=======
-class Controle():
->>>>>>> 8767b513ef33111ad011b289c1bb740819bdabf3
     def __init__(self):
         self.banquinho = Banquinho()
 
@@ -29,10 +17,6 @@ class Controle():
 
     def rmPessoa(self, key):
         self.banquinho.rmClient(key)
-<<<<<<< HEAD
-=======
-        
->>>>>>> 8767b513ef33111ad011b289c1bb740819bdabf3
 
     def sacar(self, quantidade, key):
         operacao = Saque(quantidade)
