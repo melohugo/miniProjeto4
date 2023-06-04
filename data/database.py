@@ -25,8 +25,13 @@ class Banquinho:
 
         nomeArq = pessoa.cpf_cnpj
 
+<<<<<<< HEAD
         with open("data/" + nomeArq + ".json", "w") as arquivo:
             json.dump(pessoaConvert, arquivo, indent=4)
+=======
+        with open(nomeArq + ".json", "w") as arquivo:
+            json.dump(pessoaConvert, arquivo, indent = 4)
+>>>>>>> 8767b513ef33111ad011b289c1bb740819bdabf3
 
         ##arquivo de senhas##
 

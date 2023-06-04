@@ -4,7 +4,7 @@ from tkinter import font as tkfont
 from modulos.controler import *
 from interfaceGerente import *
 
-controle = Controle()
+
 
 class SampleApp(tk.Tk):
 
