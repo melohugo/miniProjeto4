@@ -20,11 +20,11 @@ class Controle:
 
     def sacar(self, quantidade, key):
         operacao = Saque(quantidade)
-        self.banquinho.opBancaria(operacao, key)
+        return self.banquinho.opBancaria(operacao, key)
 
     def depositar(self, quantidade, key):
         operacao = Deposito(quantidade)
-        self.banquinho.opBancaria(operacao, key)
+        return self.banquinho.opBancaria(operacao, key)
 
     def solCredito(self, quantidade, key):
         self.banquinho.credito(quantidade, key)

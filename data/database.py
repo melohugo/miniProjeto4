@@ -88,6 +88,10 @@ class Banquinho:
         ##carregando arquivo e atualizando saldo##
         with open("data/" + key + ".json") as arquivo:
             cliente = json.load(arquivo)
+        
+                ##atendendo requisito de saque##
+        if cliente['saldo'] + op < 0.00:
+            return False
 
         saldo = cliente['saldo'] + op
         cliente['saldo'] = saldo
@@ -97,6 +101,8 @@ class Banquinho:
 
         with open("data/" + key + ".json", "w") as arquivo:
             json.dump(cliente, arquivo, indent=4)
+
+        return True
 
     def credito(self, quandidade, key):
 
