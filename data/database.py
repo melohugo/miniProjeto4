@@ -155,5 +155,3 @@ class Banquinho:
             if verificador['senha'] == key and verificador['cpf_cnpj'] == cpf:
                 return True
         return False
-
-##teste git##
