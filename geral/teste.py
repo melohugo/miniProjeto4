@@ -6,6 +6,7 @@ controle = Controle()
 # Teste da função addPessoa
 controle.addPessoa("Joao", "123456789", "Rua A", "1234567890", "senha123", "Pessoa Fisica")
 controle.addPessoa("Joaquim", "581321", "Rua B", "6782974920", "1234", "Pessoa Fisica")
+controle.addPessoa("Roberto", "87654321", 'Rua C', "135376427", "ger3nte", "Gerente" )
 
 # Teste da função verifCpf
 cpf_valido = "123456789"

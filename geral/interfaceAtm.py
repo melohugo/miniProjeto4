@@ -193,7 +193,7 @@ class MenuPage(tk.Frame):
                 valor = valorDep.get()
                 controle.depositar(float(valor), "123456789")
                 top = Toplevel()
-                top.geometry("275x75")
+                top.geometry("280x75")
                 top.title('Deposito')
                 Label(top, text= f'Deposito de R${valor},00 reais', font= ("Calisto MT", 15)).place(x=8, y=25)
                 
