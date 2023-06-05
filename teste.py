@@ -46,7 +46,7 @@ controle.programarPag(5.00, "31/02", "123456789")
 controle.atualizarPagamento("31/02")
 
 # Teste da função rmPessoa
-#controle.rmPessoa("123456789")
+controle.rmPessoa("123456789")
 
 # Teste da função listar
 #controle.listar("123456789")

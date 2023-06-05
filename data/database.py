@@ -102,6 +102,18 @@ class Banquinho:
         with open("data/" + key + ".json", "w") as arquivo:
             json.dump(cliente, arquivo, indent=4)
 
+        ##atualizando arquivo com todos os clientes##
+        with open("data/clientes.json", "r") as arquivo:
+            clientsList = json.load(arquivo)
+
+        for cliente in clientsList:
+            if cliente['cpf_cnpj'] == key:
+                cliente['saldo'] = saldo
+                break
+
+        with open("data/clientes.json", "w") as arquivo:
+            json.dump(clientsList, arquivo, indent = 4)
+
         return True
 
     def credito(self, quandidade, key):
@@ -163,24 +175,30 @@ class Banquinho:
         return False
 
     def pagProg(self, quantidade, data, key):
+
+        ##carregando arquivo pessoal e convertendo pagamento programado para json##
         with open("data/" + key + ".json", "r") as arquivo:
             clientList = json.load(arquivo)
 
         pagamento = PagProg(data, quantidade)
         pagamentoConvert = vars(pagamento)
 
+        ##adicionando pagamento programado na lista de operações do cliente e atualizando arquivo##
         clientList['operacoes'].append(pagamentoConvert)
 
         with open("data/" + key + ".json", "w") as arquivo:
             json.dump(clientList, arquivo, indent = 4)
 
     def atualizarPagProg(self, data):
+
+        ##carregando arquivo geral e percorrendo ele##
         with open("data/clientes.json", "r") as arquivo:
             clientsList = json.load(arquivo)
 
         for client in clientsList:
             key = client['cpf_cnpj']
-
+            
+            ##carregando arquivo pessoal e verificando pagamento programado##
             with open("data/" + key + ".json", "r") as arquivo:
                 cliente = json.load(arquivo)
 
@@ -189,7 +207,14 @@ class Banquinho:
                     cliente['saldo'] = cliente['saldo'] - operacao['valor']
 
                     operacao['data'] = operacao['data'] + " pago"
-
+                    
+                    ##debitando do arquivo geral##
+                    client['saldo'] = client['saldo'] - operacao['valor']
+            
+            ##atualizando arquivo pessoal##
             with open("data/" + key + ".json", "w") as arquivo:
                 json.dump(cliente, arquivo, indent = 4)
-
+            
+        ##atualizando arquivo geral##
+        with open("data/clientes.json", "w") as arquivo:
+            json.dump(clientsList, arquivo, indent = 4)
