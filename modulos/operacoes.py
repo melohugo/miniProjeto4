@@ -23,5 +23,3 @@ class SolicitarCredito:
         self.cpf_cnpj = key
         self.saldo = saldo
         self.pedidoDeCredito = quantidade
-        
-#ajsdoajsdoaasdjasdp

@@ -29,3 +29,8 @@ class Controle:
     def solCredito(self, quantidade, key):
         self.banquinho.credito(quantidade, key)
 
+    def programarPag(self, quantidade, data, key):
+        self.banquinho.pagProg(quantidade, data, key)
+
+    def atualizarPagamento(self, data):
+        self.banquinho.atualizarPagProg(data)

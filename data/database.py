@@ -155,3 +155,35 @@ class Banquinho:
             if verificador['senha'] == key and verificador['cpf_cnpj'] == cpf:
                 return True
         return False
+
+    def pagProg(self, quantidade, data, key):
+        with open("data/" + key + ".json", "r") as arquivo:
+            clientList = json.load(arquivo)
+
+        pagamento = PagProg(data, quantidade)
+        pagamentoConvert = vars(pagamento)
+
+        clientList['operacoes'].append(pagamentoConvert)
+
+        with open("data/" + key + ".json", "w") as arquivo:
+            json.dump(clientList, arquivo, indent = 4)
+
+    def atualizarPagProg(self, data):
+        with open("data/clientes.json", "r") as arquivo:
+            clientsList = json.load(arquivo)
+
+        for client in clientsList:
+            key = client['cpf_cnpj']
+
+            with open("data/" + key + ".json", "r") as arquivo:
+                cliente = json.load(arquivo)
+
+            for operacao in cliente['operacoes']:
+                if operacao['tipo'] == "Pagamento programado" and operacao['data'] == data:
+                    cliente['saldo'] = cliente['saldo'] - operacao['valor']
+
+                    operacao['data'] = operacao['data'] + " pago"
+
+            with open("data/" + key + ".json", "w") as arquivo:
+                json.dump(cliente, arquivo, indent = 4)
+

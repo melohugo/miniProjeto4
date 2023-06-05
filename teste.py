@@ -30,6 +30,12 @@ controle.depositar(200.00, "123456789")
 # Teste da função solicitar credito
 controle.solCredito(1000000.00, "123456789")
 
+#Teste da função pagamento programado
+controle.programarPag(5.00, "31/02", "123456789")
+
+#Teste da função para atualizar pagamento programado
+controle.atualizarPagamento("31/02")
+
 # Teste da função rmPessoa
 #controle.rmPessoa("123456789")
 
