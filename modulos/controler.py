@@ -11,7 +11,7 @@ class Controle:
         return self.banquinho.verificador(cpf, key)
 
     def addPessoa(self, nome, key, endereco, telefone, senha, tipo):
-        cliente = Cliente(tipo, nome, key, endereco, telefone, senha)
+        cliente = Cliente(tipo, nome, key, endereco, telefone)
         chave = Senha(key, senha)
         self.banquinho.addClient(cliente, chave)
 

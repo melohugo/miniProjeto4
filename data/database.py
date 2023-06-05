@@ -30,15 +30,15 @@ class Banquinho:
 
         ##arquivo de senhas##
 
-        if os.path.isfile("senhas.json"):
-            with open("senhas.json", "r") as arquivo:
+        if os.path.isfile("data/.senhas.json"):
+            with open("data/.senhas.json", "r") as arquivo:
                 senhas = json.load(arquivo)
         else:
             senhas = []
 
         senhas.append(senhaConvert)
 
-        with open("data/senhas.json", "w") as arquivo:
+        with open("data/.senhas.json", "w") as arquivo:
             json.dump(senhas, arquivo, indent = 4)
 
     def rmClient(self, key):
@@ -65,7 +65,7 @@ class Banquinho:
 
         ##deletando senha##
 
-        with open("data/senhas.json") as arquivo:
+        with open("data/.senhas.json") as arquivo:
             senhasList = json.load(arquivo)
 
         for senha in senhasList:
@@ -73,7 +73,7 @@ class Banquinho:
                 senhasList.remove(senha)
                 break
 
-        with open("data/senhas.json", "w") as arquivo:
+        with open("data/.senhas.json", "w") as arquivo:
             json.dump(senhasList, arquivo, indent = 4)
 
     def opBancaria(self, operacao, key):
@@ -164,7 +164,7 @@ class Banquinho:
 
         ##carregando arquivo das senhas##
 
-        with open("data/senhas.json") as arquivo:
+        with open("data/.senhas.json") as arquivo:
             senha = json.load(arquivo)
 
         ##fazendo confirmação de senha e cpf/cnpj##
