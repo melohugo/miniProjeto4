@@ -23,8 +23,11 @@ if controle.verifCpf(cpf_valido, senha_incorreta):
 else:
     print("CPF inválido ou senha incorreta")
 
-# Teste da função sacar
-controle.sacar(100.00, "123456789")
+# Teste da função sacar com saldo insuficiente
+if controle.sacar(100.00, "123456789"):
+    print("Saque efetuado com sucesso")
+else:
+    print("Saldo insuficiente")
 
 # Teste da função depositar
 controle.depositar(200.00, "123456789")

@@ -5,7 +5,6 @@ from controler import *
 from interfaceGerente import *
 
 
-
 class SampleApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -19,7 +18,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
     
         self.frames = {}
-        for F in (StartPage, MenuPage, ManagerPage, GerenciaPage):
+        for F in (StartPage, MenuPage, ManagerPage, GerenciaPage, AddPage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -100,6 +99,7 @@ class StartPage(tk.Frame):
 
         caixa_entrada_senha.bind('<FocusIn>', handle_focus_in)
 
+
         def checaSenha():
             senha = minhaSenha.get() 
             cpf = meuCPF.get()
@@ -112,13 +112,13 @@ class StartPage(tk.Frame):
                senhaErrada_label['text']= 'Senha Errada'
 
         enter_button = tk.Button(self,
-                                 font = ('Calisto MT', 10),
+                                 
                                  bg = "#cbc5ea",
                                  text= 'Enter',
                                  command = checaSenha,
                                  relief='raised',
                                  borderwidth= 3,
-                                 width = 22,
+                                 width = 24,
                                  height = 2)
         enter_button.pack(pady=10)
 
@@ -139,12 +139,12 @@ class StartPage(tk.Frame):
 
         gerente_button = tk.Button(self,
                                  text= 'Gerente',
-                                 font=('Calisto MT',10),
+                                 
                                  bg = "#cbc5ea",
                                  relief='raised',
                                  command = Gerenciar,
                                  borderwidth= 3,
-                                 width = 22,
+                                 width = 24,
                                  height = 2)
         gerente_button.pack(pady=10, expand = True)
 
@@ -191,7 +191,8 @@ class MenuPage(tk.Frame):
             
             def dep():
                 valor = valorDep.get()
-                controle.depositar(float(valor), "123456789")
+                
+                controle.depositar(float(valor), cpf)
                 top = Toplevel()
                 top.geometry("280x75")
                 top.title('Deposito')
@@ -205,7 +206,7 @@ class MenuPage(tk.Frame):
                                  command = dep,
                                  relief='raised',
                                  borderwidth= 3,
-                                 width = 22,
+                                 width = 23,
                                  height = 2)
             button.pack(pady=10)
             
@@ -223,12 +224,7 @@ class MenuPage(tk.Frame):
         space_label = tk.Label(self, height =1, bg='#183642')
         space_label.pack()
         
-        def sacar():
-            controle.sacar(200.00, '123456789')
-            top = Toplevel()
-            top.geometry("200x75")
-            top.title('Saque')
-            Label(top, text= 'Saque de 200 reais', font= ("Calisto MT", 15)).place(x=8, y=25)
+       
             
         def sacar():
             valorSac = tk.StringVar()
@@ -244,7 +240,7 @@ class MenuPage(tk.Frame):
             
             def saqueValor():
                 valor = valorSac.get()
-                controle.depositar(float(valor), "123456789")
+                controle.depositar(float(valor), cpf)
                 top = Toplevel()
                 top.geometry("275x75")
                 top.title('Saque')
@@ -292,7 +288,7 @@ class MenuPage(tk.Frame):
             
             def credito():
                 valor = valorCred.get()
-                controle.depositar(float(valor), "123456789")
+                controle.solCredito(float(valor), cpf)
                 top = Toplevel()
                 top.geometry("275x75")
                 top.title('Credito')

@@ -51,12 +51,13 @@ class Banquinho:
         for client in clientsList:
             if client['cpf_cnpj'] == key:
                 if client['saldo'] == 0.00:
+
                     clientsList.remove(client)
 
                     with open("clientes.json", "w") as arquivo:
                         json.dump(clientsList, arquivo, indent=4)
 
-                    os.remove( key + ".json")
+                    os.remove(key + ".json")
 
                     break
                 else:
@@ -75,6 +76,8 @@ class Banquinho:
 
         with open("senhas.json", "w") as arquivo:
             json.dump(senhasList, arquivo, indent = 4)
+            
+            return 
 
     def opBancaria(self, operacao, key):
 
@@ -88,6 +91,10 @@ class Banquinho:
         ##carregando arquivo e atualizando saldo##
         with open( key + ".json") as arquivo:
             cliente = json.load(arquivo)
+        
+                ##atendendo requisito de saque##
+        if cliente['saldo'] + op < 0.00:
+            return False
 
         saldo = cliente['saldo'] + op
         cliente['saldo'] = saldo
@@ -97,6 +104,20 @@ class Banquinho:
 
         with open( key + ".json", "w") as arquivo:
             json.dump(cliente, arquivo, indent=4)
+
+        ##atualizando arquivo com todos os clientes##
+        with open("clientes.json", "r") as arquivo:
+            clientsList = json.load(arquivo)
+
+        for cliente in clientsList:
+            if cliente['cpf_cnpj'] == key:
+                cliente['saldo'] = saldo
+                break
+
+        with open("clientes.json", "w") as arquivo:
+            json.dump(clientsList, arquivo, indent = 4)
+
+        return True
 
     def credito(self, quandidade, key):
 
@@ -137,7 +158,7 @@ class Banquinho:
             json.dump(pedidos, arquivo, indent=4)
 
     def listar(self, key):
-        with open(key + ".json") as arquivo:
+        with open( key + ".json") as arquivo:
             op = json.load(arquivo)
 
         print(json.dumps(op, indent=4))
@@ -155,3 +176,48 @@ class Banquinho:
             if verificador['senha'] == key and verificador['cpf_cnpj'] == cpf:
                 return True
         return False
+
+    def pagProg(self, quantidade, data, key):
+
+        ##carregando arquivo pessoal e convertendo pagamento programado para json##
+        with open( key + ".json", "r") as arquivo:
+            clientList = json.load(arquivo)
+
+        pagamento = PagProg(data, quantidade)
+        pagamentoConvert = vars(pagamento)
+
+        ##adicionando pagamento programado na lista de operações do cliente e atualizando arquivo##
+        clientList['operacoes'].append(pagamentoConvert)
+
+        with open( key + ".json", "w") as arquivo:
+            json.dump(clientList, arquivo, indent = 4)
+
+    def atualizarPagProg(self, data):
+
+        ##carregando arquivo geral e percorrendo ele##
+        with open("clientes.json", "r") as arquivo:
+            clientsList = json.load(arquivo)
+
+        for client in clientsList:
+            key = client['cpf_cnpj']
+            
+            ##carregando arquivo pessoal e verificando pagamento programado##
+            with open( key + ".json", "r") as arquivo:
+                cliente = json.load(arquivo)
+
+            for operacao in cliente['operacoes']:
+                if operacao['tipo'] == "Pagamento programado" and operacao['data'] == data:
+                    cliente['saldo'] = cliente['saldo'] - operacao['valor']
+
+                    operacao['data'] = operacao['data'] + " pago"
+                    
+                    ##debitando do arquivo geral##
+                    client['saldo'] = client['saldo'] - operacao['valor']
+            
+            ##atualizando arquivo pessoal##
+            with open( key + ".json", "w") as arquivo:
+                json.dump(cliente, arquivo, indent = 4)
+            
+        ##atualizando arquivo geral##
+        with open("clientes.json", "w") as arquivo:
+            json.dump(clientsList, arquivo, indent = 4)
