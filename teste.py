@@ -46,7 +46,17 @@ controle.programarPag(5.00, "31/02", "123456789")
 controle.atualizarPagamento("31/02")
 
 # Teste da função rmPessoa
-controle.rmPessoa("123456789")
+if controle.rmPessoa("123456789"):
+    print("Cliente deletado do banco de dados")
+else:
+    print("Operação invalida")
+
+controle.sacar(95.00, "123456789")
+
+if controle.rmPessoa("123456789"):
+    print("Cliente deletado do banco de dados")
+else:
+    print("Operação invalida")
 
 # Teste da função listar
 #controle.listar("123456789")

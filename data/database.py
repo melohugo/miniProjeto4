@@ -41,30 +41,7 @@ class Banquinho:
         with open("data/.senhas.json", "w") as arquivo:
             json.dump(senhas, arquivo, indent = 4)
 
-    def rmClient(self, key):
-
-        ##deletando cliente##
-
-        with open("data/clientes.json") as arquivo:
-            clientsList = json.load(arquivo)
-        
-        for client in clientsList:
-            if client['cpf_cnpj'] == key:
-                if client['saldo'] == 0.00:
-                    nome = client['nome']
-
-                    clientsList.remove(client)
-
-                    with open("data/clientes.json", "w") as arquivo:
-                        json.dump(clientsList, arquivo, indent=4)
-
-                    os.remove("data/" + key + ".json")
-
-                    break
-                else:
-                    print("operacao invalida")
-                    break
-
+    def deletarSenha(self, key):
         ##deletando senha##
 
         with open("data/.senhas.json") as arquivo:
@@ -78,7 +55,30 @@ class Banquinho:
         with open("data/.senhas.json", "w") as arquivo:
             json.dump(senhasList, arquivo, indent = 4)
 
-        return nome
+    def rmClient(self, key):
+
+        ##deletando cliente##
+
+        with open("data/clientes.json") as arquivo:
+            clientsList = json.load(arquivo)
+        
+        for client in clientsList:
+            if client['cpf_cnpj'] == key:
+                if client['saldo'] == 0.00:
+
+                    ##chamando função para deletar senha##
+                    self.deletarSenha(key)
+
+                    clientsList.remove(client)
+
+                    with open("data/clientes.json", "w") as arquivo:
+                        json.dump(clientsList, arquivo, indent=4)
+
+                    os.remove("data/" + key + ".json")
+
+                    return True
+                else:
+                    return False
 
     def opBancaria(self, operacao, key):
 
