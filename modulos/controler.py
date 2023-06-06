@@ -16,7 +16,7 @@ class Controle:
         self.banquinho.addClient(cliente, chave)
 
     def rmPessoa(self, key):
-        self.banquinho.rmClient(key)
+        return self.banquinho.rmClient(key)
 
     def sacar(self, quantidade, key):
         operacao = Saque(quantidade)

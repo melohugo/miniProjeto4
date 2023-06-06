@@ -51,6 +51,8 @@ class Banquinho:
         for client in clientsList:
             if client['cpf_cnpj'] == key:
                 if client['saldo'] == 0.00:
+                    nome = client['nome']
+
                     clientsList.remove(client)
 
                     with open("data/clientes.json", "w") as arquivo:
@@ -75,6 +77,8 @@ class Banquinho:
 
         with open("data/.senhas.json", "w") as arquivo:
             json.dump(senhasList, arquivo, indent = 4)
+
+        return nome
 
     def opBancaria(self, operacao, key):
 
