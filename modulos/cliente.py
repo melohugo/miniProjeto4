@@ -13,3 +13,7 @@ class Senha:
     def __init__(self, key, senha):
         self.cpf_cnpj = key
         self.senha = senha
+
+class ClienteAtual:
+    def __init__(self, key):
+        self.cpf_cnpj = key

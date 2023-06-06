@@ -222,3 +222,33 @@ class Banquinho:
         ##atualizando arquivo geral##
         with open("data/clientes.json", "w") as arquivo:
             json.dump(clientsList, arquivo, indent = 4)
+
+    
+    def atualizaCpf(self, cpf_cnpj):
+
+        ##criando arquivo clienteAtual##
+        if os.path.isfile("data/.clienteAtual.json"):
+            with open("data/.clienteAtual.json", "r") as arquivo:
+                dados = json.load(arquivo)
+        else:
+            dados = []
+ 
+        ##convertendo dados e atualizando arquivo##
+        dados = ClienteAtual(cpf_cnpj)
+        dadosConvert = vars(dados)
+
+        with open("data/.clienteAtual.json", "w") as arquivo:
+            json.dump(dadosConvert, arquivo, indent = 4)
+
+    def checaCpf(self):
+
+        ##carregando aruivo e armazenando##
+        with open("data/.clienteAtual.json", "r") as arquivo:
+            dados = json.load(arquivo)
+
+        cpf_cnpj = dados['cpf_cnpj']
+        
+        ##removendo arquivo e retornando dado##
+        os.remove("data/.clienteAtual.json")
+
+        return cpf_cnpj

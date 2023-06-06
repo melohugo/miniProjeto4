@@ -34,3 +34,9 @@ class Controle:
 
     def atualizarPagamento(self, data):
         self.banquinho.atualizarPagProg(data)
+
+    def clienteAtual(self, key):
+        self.banquinho.atualizaCpf(key)
+
+    def mostraClienteAtual(self):
+        return self.banquinho.checaCpf()

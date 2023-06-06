@@ -58,5 +58,12 @@ if controle.rmPessoa("123456789"):
 else:
     print("Operação invalida")
 
+#Teste da função atualizar cliente
+controle.clienteAtual("000000000")
+
+#Teste da função mostrar cliente atual
+cpf = controle.mostraClienteAtual()
+print(cpf)
+
 # Teste da função listar
 #controle.listar("123456789")
