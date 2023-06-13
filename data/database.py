@@ -201,6 +201,8 @@ class Banquinho:
 
         for client in clientsList:
             key = client['cpf_cnpj']
+
+            aux = 0
             
             ##carregando arquivo pessoal e verificando pagamento programado##
             with open("data/" + key + ".json", "r") as arquivo:
@@ -214,7 +216,9 @@ class Banquinho:
                     
                     ##debitando do arquivo geral##
                     client['saldo'] = client['saldo'] - operacao['valor']
-            
+
+                    aux = 1
+                    
             ##atualizando arquivo pessoal##
             with open("data/" + key + ".json", "w") as arquivo:
                 json.dump(cliente, arquivo, indent = 4)
@@ -222,7 +226,11 @@ class Banquinho:
         ##atualizando arquivo geral##
         with open("data/clientes.json", "w") as arquivo:
             json.dump(clientsList, arquivo, indent = 4)
-
+        
+        if aux == 1:
+            return True
+        else:
+            return False
     
     def atualizaCpf(self, cpf_cnpj):
 
@@ -267,3 +275,16 @@ class Banquinho:
             cliente = json.load(arquivo)
 
         return cliente['saldo']
+
+    def trocaSenha(key, novaSenha):
+
+        with open("data/.senhas.json", "r") as arquivo:
+            senhas = json.load(arquivo)
+
+        for dados in senhas:
+            if dados['cpf_cnpj'] == key:
+                dados['senha'] = novaSenha
+
+        with open("data/.senhas.json", "w") as arquivo:
+            json.dump(senhas, arquivo, indent = 4)
+            

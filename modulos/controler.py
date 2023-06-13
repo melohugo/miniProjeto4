@@ -46,3 +46,6 @@ class Controle:
     
     def mostrarSaldo(self, key):
         return self.banquinho.saldo(key)
+
+    def atualizarSenha(self, key, novaSenha):
+        self.banquinho.trocaSenha(key, novaSenha)
