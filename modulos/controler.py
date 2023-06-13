@@ -40,3 +40,9 @@ class Controle:
 
     def mostraClienteAtual(self):
         return self.banquinho.checaCpf()
+
+    def mostrarPedidos(self):
+        return self.banquinho.pedidosDeCredito()
+    
+    def mostrarSaldo(self, key):
+        return self.banquinho.saldo(key)

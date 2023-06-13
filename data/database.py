@@ -252,3 +252,18 @@ class Banquinho:
         os.remove("data/.clienteAtual.json")
 
         return cpf_cnpj
+
+
+    def pedidosDeCredito(self):
+
+        with open("pedidosDeCredito.json", "r") as arquivo:
+            pedidos = json.load(arquivo)
+
+        return pedidos
+
+    def saldo(self, key):
+
+        with open("data/" + key + ".json", "r") as arquivo:
+            cliente = json.load(arquivo)
+
+        return cliente['saldo']
