@@ -6,7 +6,6 @@ controle = Controle()
 # Teste da função addPessoa
 controle.addPessoa("Joao", "123456789", "Rua A", "1234567890", "senha123", "Pessoa Fisica")
 controle.addPessoa("Joaquim", "581321", "Rua B", "6782974920", "1234", "Pessoa Fisica")
-controle.addPessoa("Roberto", "87654321", 'Rua C', "135376427", "ger3nte", "Gerente" )
 
 # Teste da função verifCpf
 cpf_valido = "123456789"
@@ -35,8 +34,30 @@ controle.depositar(200.00, "123456789")
 # Teste da função solicitar credito
 controle.solCredito(1000000.00, "123456789")
 
+#Teste da função pagamento programado
+controle.programarPag(5.00, "31/02", "123456789")
+
+#Teste da função para atualizar pagamento programado
+controle.atualizarPagamento("31/02")
+
+# Teste da função rmPessoa
+
+controle.sacar(95.00, "123456789")
+
+if controle.rmPessoa("123456789"):
+    print("Cliente deletado do banco de dados")
+else:
+    print("Operação invalida")
+
 # Teste da função rmPessoa
 #controle.rmPessoa("123456789")
+
+#Teste da função atualizar cliente
+#controle.clienteAtual("000000000")
+
+#Teste da função mostrar cliente atual
+#cpf = controle.mostraClienteAtual()
+#print(cpf)
 
 # Teste da função listar
 #controle.listar("123456789")

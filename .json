@@ -1,0 +1,9 @@
+{
+    "nome": "",
+    "tipo": "",
+    "cpf_cnpj": "",
+    "endereco": "",
+    "telefone": "",
+    "saldo": 0.0,
+    "operacoes": []
+}

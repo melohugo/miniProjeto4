@@ -1,0 +1,14 @@
+{
+    "nome": "vitao",
+    "tipo": "pessoa fisica",
+    "cpf_cnpj": "88889999",
+    "endereco": "rua do vitao",
+    "telefone": "561489987",
+    "saldo": 600.0,
+    "operacoes": [
+        {
+            "tipo": "Deposito",
+            "valor": 600.0
+        }
+    ]
+}

@@ -40,6 +40,21 @@ class Banquinho:
 
         with open("senhas.json", "w") as arquivo:
             json.dump(senhas, arquivo, indent = 4)
+            
+    def deletarSenha(self, key):
+            
+    ##deletando senha##
+
+        with open("senhas.json") as arquivo:
+         senhasList = json.load(arquivo)
+
+        for senha in senhasList:
+            if senha['cpf_cnpj'] == key:
+                senhasList.remove(senha)
+                break
+
+        with open("senhas.json", "w") as arquivo:
+            json.dump(senhasList, arquivo, indent = 4)
 
     def rmClient(self, key):
 
@@ -51,6 +66,8 @@ class Banquinho:
         for client in clientsList:
             if client['cpf_cnpj'] == key:
                 if client['saldo'] == 0.00:
+                    
+                    self.deletarSenha(key)
 
                     clientsList.remove(client)
 
@@ -59,25 +76,11 @@ class Banquinho:
 
                     os.remove(key + ".json")
 
-                    break
+                    return True
                 else:
-                    print("operacao invalida")
-                    break
+                    return False
 
-        ##deletando senha##
-
-        with open("senhas.json") as arquivo:
-            senhasList = json.load(arquivo)
-
-        for senha in senhasList:
-            if senha['cpf_cnpj'] == key:
-                senhasList.remove(senha)
-                break
-
-        with open("senhas.json", "w") as arquivo:
-            json.dump(senhasList, arquivo, indent = 4)
-            
-            return 
+        
 
     def opBancaria(self, operacao, key):
 
@@ -129,7 +132,7 @@ class Banquinho:
         ##pegando dados do cliente##
 
         for client in clientsList:
-            if client['cpf_cnpj']:
+            if client['cpf_cnpj'] == key:
                 nome = client['nome']
                 tipo = client['tipo']
                 key = client['cpf_cnpj']
@@ -221,3 +224,58 @@ class Banquinho:
         ##atualizando arquivo geral##
         with open("clientes.json", "w") as arquivo:
             json.dump(clientsList, arquivo, indent = 4)
+            
+    def atualizaCpf(self, cpf_cnpj):
+
+        ##criando arquivo clienteAtual##
+        if os.path.isfile("clienteAtual.json"):
+            with open("clienteAtual.json", "r") as arquivo:
+                dados = json.load(arquivo)
+        else:
+            dados = []
+ 
+        ##convertendo dados e atualizando arquivo##
+        dados = ClienteAtual(cpf_cnpj)
+        dadosConvert = vars(dados)
+
+        with open("clienteAtual.json", "w") as arquivo:
+            json.dump(dadosConvert, arquivo, indent = 4)
+
+    def checaCpf(self):
+
+        ##carregando aruivo e armazenando##
+        with open("clienteAtual.json", "r") as arquivo:
+            dados = json.load(arquivo)
+
+        cpf_cnpj = dados['cpf_cnpj']
+        
+        ##removendo arquivo e retornando dado##
+        #os.remove("clienteAtual.json")
+
+        return cpf_cnpj
+    
+    def pedidosDeCredito(self):
+
+        with open("pedidosDeCredito.json", "r") as arquivo:
+            pedidos = json.load(arquivo)
+
+        return pedidos
+
+    def saldo(self, key):
+
+        with open(key + ".json", "r") as arquivo:
+            cliente = json.load(arquivo)
+
+        return cliente['saldo']
+    
+    def trocaSenha(key, novaSenha):
+
+        with open("senhas.json", "r") as arquivo:
+            senhas = json.load(arquivo)
+
+        for dados in senhas:
+            if dados['cpf_cnpj'] == key:
+                dados['senha'] = novaSenha
+
+        with open("senhas.json", "w") as arquivo:
+            json.dump(senhas, arquivo, indent = 4)
