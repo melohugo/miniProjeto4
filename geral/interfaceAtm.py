@@ -11,7 +11,7 @@ class SampleApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        self.fonte = ("Calisto MT", 45, 'bold')
+      
 
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand= True)
@@ -19,7 +19,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
     
         self.frames = {}
-        for F in (StartPage, MenuPage, ManagerPage, GerenciaPage, AddPage, Pag2):
+        for F in (StartPage, MenuPage, ManagerPage, GerenciaPage, AddPage, Pag2, Pag3):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -42,7 +42,7 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent, bg= "#183642")
         self.controller = controller
 
-        self.controller.title('Banco CHQ')
+        self.controller.title('Banco HCQ')
         self.controller.state('zoomed')
         
 
@@ -107,11 +107,12 @@ class StartPage(tk.Frame):
             controle.clienteAtual(cpf)
             if controle.verifCpf(cpf, senha) == True:     
                
+               meuCPF.set('')
                minhaSenha.set('')
                senhaErrada_label['text']=''
                controller.show_frame('MenuPage')
             else:
-               senhaErrada_label['text']= 'Senha Errada'
+               senhaErrada_label['text']= 'Senha Errada ou CPF Invalido'
 
         enter_button = tk.Button(self,
                                  
@@ -163,21 +164,22 @@ class MenuPage(tk.Frame):
 
         heading_label = tk.Label(self,
                                  text= 'Banco HCQ',
-                                 font= ('Calisto MT', 45, 'bold'),
+                                 font= ('Calisto MT', 45),
                                  fg= 'white',
                                  background= '#183642')
         heading_label.pack(pady=25)
 
+        space_label = tk.Label(self, height =4, bg = '#183642')
+        space_label.pack()
+        
         selecao_label= tk.Label(self,
-                                        text='Selecione uma acao',
+                                        text='Selecione uma ação',
                                         font=('Calisto MT',25),
                                         fg='white',
                                         bg='#183642'
                                         )
         selecao_label.pack(fill='x')
         
-        space_label = tk.Label(self, height =4, bg = '#183642')
-        space_label.pack()
         
         def sair():
             controller.show_frame('StartPage')
@@ -189,9 +191,9 @@ class MenuPage(tk.Frame):
             saldo = controle.mostrarSaldo(cpf)
             
             top = Toplevel()
-            top.geometry("280x75")
+            top.geometry("300x75")
             top.title('Extrato')
-            Label(top, text= f'Seu saldo é de R${saldo},00 reais', font= ("Calisto MT", 15)).place(x=8, y=25)
+            Label(top, text= f'Seu saldo é de R${saldo} reais', font= ("Calisto MT", 15)).place(x=8, y=25)
             
         
         extrato_button= tk.Button(self,
@@ -231,6 +233,9 @@ class MenuPage(tk.Frame):
                 top.title('Deposito')
                 Label(top, text= f'Deposito de R${valor} reais', font= ("Calisto MT", 15)).place(x=8, y=25)
                 
+                caixa_entrada_valor.pack_forget()
+                button.pack_forget()
+                
             
             button = tk.Button(self,
                                
@@ -242,6 +247,7 @@ class MenuPage(tk.Frame):
                                  width = 23,
                                  height = 2)
             button.pack(pady=10)
+            
             
 
         depositar_button= tk.Button(self,
@@ -280,7 +286,7 @@ class MenuPage(tk.Frame):
                 
                 if controle.sacar(float(valor), cpf):
                     top = Toplevel()
-                    top.geometry("275x75")
+                    top.geometry("300x75")
                     top.title('Saque')
                     Label(top, text= f'Saque de R${valor},00 reais', font= ("Calisto MT", 15)).place(x=8, y=25)
                     
@@ -290,7 +296,8 @@ class MenuPage(tk.Frame):
                     top.title('Saque')
                     Label(top, text= f'Nao foi possivel sacar', font= ("Calisto MT", 15)).place(x=8, y=25)
                     
-                
+                caixa_entrada_valor.pack_forget()
+                button.pack_forget()
                 
             
             button = tk.Button(self,
@@ -362,21 +369,21 @@ class Pag2(tk.Frame):
 
         heading_label = tk.Label(self,
                                  text= 'Banco HCQ',
-                                 font= ('Calisto MT', 45, 'bold'),
+                                 font= ('Calisto MT', 45),
                                  fg= 'white',
                                  background= '#183642')
         heading_label.pack(pady=25)
 
+        space_label = tk.Label(self, height =4, bg = '#183642')
+        space_label.pack()
         selecao_label= tk.Label(self,
-                                        text='Selecione uma acao',
+                                        text='Selecione uma ação',
                                         font=('Calisto MT',25),
                                         fg='white',
                                         bg='#183642'
                                         )
         selecao_label.pack(fill='x')
         
-        space_label = tk.Label(self, height =4, bg = '#183642')
-        space_label.pack()
         
         def sair():
             controller.show_frame('StartPage')
@@ -433,9 +440,12 @@ class Pag2(tk.Frame):
             
             
                 top = Toplevel()
-                top.geometry("400x75")
+                top.geometry("500x75")
                 top.title('Pag Programado')
                 Label(top, text= f'Pagamento de R${valor},00 reais para o dia {dia}', font= ("Calisto MT", 15)).place(x=8, y=25)
+                
+                caixa_entrada_valor.pack_forget()
+                button.pack_forget()
                 
             button = tk.Button(self,
                                
@@ -482,10 +492,12 @@ class Pag2(tk.Frame):
                 
                 controle.solCredito(float(valor), cpf)
                 top = Toplevel()
-                top.geometry("275x75")
+                top.geometry("350x75")
                 top.title('Credito')
                 Label(top, text= f'Pedido de credito de R${valor},00 reais', font= ("Calisto MT", 15)).place(x=8, y=25)
                 
+                caixa_entrada_valor.pack_forget()
+                button.pack_forget()
             
             button = tk.Button(self,
                                

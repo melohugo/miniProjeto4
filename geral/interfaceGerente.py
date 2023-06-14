@@ -3,6 +3,7 @@ from tkinter import font as tkfont
 from tkinter import *
 from controler import *
 from database import *
+import os
 
 controle = Controle()
 
@@ -74,7 +75,7 @@ class ManagerPage(tk.Frame):
             senha = minhaSenha.get() 
             Idgerente = Id.get()
             
-            if "123" == Idgerente and "123" == senha:
+            if "123" == Idgerente and "ger3nte" == senha:
           
                senhaErrada_label['text']=''
                controller.show_frame('GerenciaPage')
@@ -104,25 +105,20 @@ class ManagerPage(tk.Frame):
         space_label.pack()
 
 
-        def __init__(self, parent, controller):
-            tk.Frame.__init__(self, parent, bg= '#183642')
-            self.controller = controller
-
-            button_frame = tk.Frame(self,bg='#33334d')
-            button_frame.pack(fill='both',expand=True)
 
 
-            def sair():
-                controller.show_frame('StartPage')
+        def sair():
+            controller.show_frame('StartPage')
         
-            sair_button= tk.Button(button_frame,
-                                            text='Sair',
-                                            command=sair,
-                                            relief='raised',
-                                            borderwidth=3,
-                                            width=24,
-                                            height=4)
-            sair_button.grid(row=40,column=40,pady=5)
+        sair_button= tk.Button(self,
+                                        text='Sair',
+                                        command=sair,
+                                        bg = "#cbc5ea",
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=24,
+                                        height=2)
+        sair_button.pack(pady =10, expand= True)
 
 
 class GerenciaPage(tk.Frame):
@@ -199,6 +195,11 @@ class GerenciaPage(tk.Frame):
                     top.title('Operacao Invalida')
                     Label(top, text= f'O cliente {clienteRem} nao pode ser removido', font= ("Calisto MT", 15)).place(x=8, y=25)
                     
+                caixa_entrada.pack_forget()
+                button.pack_forget()
+                    
+                
+                    
                 
             button = tk.Button(self,
                                
@@ -210,6 +211,8 @@ class GerenciaPage(tk.Frame):
                                  width = 23,
                                  height = 2)
             button.pack(pady=10)
+            
+            
 
         remover_button= tk.Button(self,
                                         text='Remover',
@@ -224,83 +227,6 @@ class GerenciaPage(tk.Frame):
         space_label = tk.Label(self, height =1, bg='#183642')
         space_label.pack()
         
-        
-
-        def atualizar():
-             
-            dataAtt= tk.StringVar()
-            caixa_entrada = tk.Entry(self, 
-                                       textvariable=dataAtt,
-                                       font=('Calisto MT',12),
-                                       width=22
-                                       )
-        
-            caixa_entrada.focus_set()
-            caixa_entrada.pack(ipady = 7)
-            
-            def att():
-                data = dataAtt.get()
-                controle.atualizarPagamento(data)
-                
-                top = Toplevel()
-                top.geometry("275x75")
-                top.title('Atualizar Pagamentos')
-                Label(top, text= f'Pagamentos do dia {data} atualizados', font= ("Calisto MT", 15)).place(x=8, y=25)
-                
-                
-            
-            button = tk.Button(self,
-                                
-                                    bg = "#cbc5ea",
-                                    text= 'Enter',
-                                    command = att,
-                                    relief='raised',
-                                    borderwidth= 3,
-                                    width = 22,
-                                    height = 2)
-            button.pack(pady=10)
-             
-
-        attPag_button= tk.Button(self,
-                                        text='Atualizar Pagamentos',
-                                        command=atualizar,
-                                        relief='raised',
-                                        borderwidth=3,
-                                        width=40,
-                                        height=3
-                                        )
-        attPag_button.pack(pady=5)
-
-        space_label = tk.Label(self, height =1, bg='#183642')
-        space_label.pack()
-        
-        
-        def sair():
-            controller.show_frame('StartPage')
-            
-        def checar():
-            pedidos = controle.mostrarPedidos()
-                
-            top = Toplevel()
-            top.geometry("300x500")
-            top.title('Atualizar Pagamentos')
-            Label(top, text= f'{pedidos}', font= ("Calisto MT", 15)).place(x=8, y=25)
-            
-            
-
-        checarCred_button= tk.Button(self,
-                                        text='Checar pedidos de crédito',
-                                        command=checar,
-                                        relief='raised',
-                                        borderwidth=3,
-                                        width=40,
-                                        height=3
-                                        )
-        checarCred_button.pack(pady=5)
-        
-        space_label = tk.Label(self, height =1, bg='#183642')
-        space_label.pack()
-        
         def attSenha():
             
             cpf_label = tk.Label(self, 
@@ -309,7 +235,7 @@ class GerenciaPage(tk.Frame):
                                bg='#183642',
                                fg='white')
         
-            cpf_label.pack(pady = 8)
+            cpf_label.pack(pady = 5)
             
             cpfCliente= tk.StringVar()
             caixa_entrada = tk.Entry(self, 
@@ -319,7 +245,7 @@ class GerenciaPage(tk.Frame):
                                        )
         
             caixa_entrada.focus_set()
-            caixa_entrada.pack(ipady = 7)
+            caixa_entrada.pack(ipady = 5)
             
             novaSenha_label = tk.Label(self, 
                                text='Nova Senha',
@@ -327,7 +253,7 @@ class GerenciaPage(tk.Frame):
                                bg='#183642',
                                fg='white')
         
-            novaSenha_label.pack(pady = 8)
+            novaSenha_label.pack(pady = 5)
             
             novaSenha= tk.StringVar()
             caixa_entrada = tk.Entry(self, 
@@ -337,7 +263,7 @@ class GerenciaPage(tk.Frame):
                                        )
         
             caixa_entrada.focus_set()
-            caixa_entrada.pack(ipady = 7)
+            caixa_entrada.pack(ipady = 5)
             
             def senhaNova():
                 
@@ -346,9 +272,12 @@ class GerenciaPage(tk.Frame):
                 
                 controle.atualizarSenha(cpf, senha)
                 top = Toplevel()
-                top.geometry("265x75")
+                top.geometry("275x75")
                 top.title('Senha Att')
-                Label(top, text= 'Senha atualizada', font= ("Calisto MT", 15)).place(x=8, y=25)
+                Label(top, text= 'Senha atualizada com sucesso!', font= ("Calisto MT", 15)).place(x=8, y=25)
+                
+                caixa_entrada_valor.pack_forget()
+                button.pack_forget()
                 
             button = tk.Button(self,
                                 
@@ -357,7 +286,7 @@ class GerenciaPage(tk.Frame):
                                     command = senhaNova,
                                     relief='raised',
                                     borderwidth= 3,
-                                    width = 22,
+                                    width = 23,
                                     height = 2)
             button.pack(pady=10)
                     
@@ -375,23 +304,23 @@ class GerenciaPage(tk.Frame):
         space_label = tk.Label(self, height =1, bg='#183642')
         space_label.pack()
         
-
-
-
-
-        sair_button= tk.Button(self,
-                                        text='Sair',
-                                        command=sair,
+        def pag3():
+            controller.show_frame('Pag3')
+        
+        mais_button= tk.Button(self,
+                                        text='Mais Opcoes >',
+                                        command=pag3,
                                         relief='raised',
                                         borderwidth=3,
                                         width=40,
                                         height=3
                                         )
-        sair_button.pack(pady=5)
+        mais_button.pack(pady=5)
+    
+        
+        
 
-        space_label = tk.Label(self, height =1, bg='#183642')
-        space_label.pack()
-     
+        
 class AddPage(tk.Frame):
     
     def __init__(self, parent, controller):
@@ -553,11 +482,12 @@ class AddPage(tk.Frame):
             
             controle.addPessoa(novoNome, novaKey, novoEndereco, novoTelefone, novaSenha, novoTipo)
                   
-            controller.show_frame('GerenciaPage')
             top = Toplevel()
             top.geometry("280x75")
             top.title('Credito')
             Label(top, text= f'Cliente {novoNome} foi adicionado', font= ("Calisto MT", 15)).place(x=8, y=25)
+            
+            controller.show_frame('GerenciaPage')
         
         
         adicionar_button= tk.Button(self,
@@ -571,3 +501,123 @@ class AddPage(tk.Frame):
         adicionar_button.pack(pady=5)
         
      
+class Pag3(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent, bg= "#183642")
+        self.controller = controller
+
+        heading_label = tk.Label(self,
+                                 text= 'Banco HCQ',
+                                 font= ('Calisto MT', 45),
+                                 fg= 'white',
+                                 background= '#183642')
+        heading_label.pack(pady=25)
+
+        space_label = tk.Label(self, height =4, bg = '#183642')
+        space_label.pack()
+        
+        selecao_label= tk.Label(self,
+                                        text='Selecione uma ação',
+                                        font=('Calisto MT',25),
+                                        fg='white',
+                                        bg='#183642'
+                                        )
+        selecao_label.pack(fill='x')
+        
+        
+        def sair():
+            controller.show_frame('StartPage')
+            os.remove("clienteAtual.json")
+            
+        def atualizar():
+             
+            dataAtt= tk.StringVar()
+            caixa_entrada = tk.Entry(self, 
+                                       textvariable=dataAtt,
+                                       font=('Calisto MT',12),
+                                       width=22
+                                       )
+        
+            caixa_entrada.focus_set()
+            caixa_entrada.pack(ipady = 7)
+            
+            def att():
+                data = dataAtt.get()
+                controle.atualizarPagamento(data)
+                
+                top = Toplevel()
+                top.geometry("275x75")
+                top.title('Atualizar Pagamentos')
+                Label(top, text= f'Pagamentos do dia {data} atualizados', font= ("Calisto MT", 15)).place(x=8, y=25)
+                
+                
+            
+            button = tk.Button(self,
+                                
+                                    bg = "#cbc5ea",
+                                    text= 'Enter',
+                                    command = att,
+                                    relief='raised',
+                                    borderwidth= 3,
+                                    width = 22,
+                                    height = 2)
+            button.pack(pady=10)
+             
+
+        attPag_button= tk.Button(self,
+                                        text='Atualizar Pagamentos',
+                                        command=atualizar,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=40,
+                                        height=3
+                                        )
+        attPag_button.pack(pady=5)
+
+        space_label = tk.Label(self, height =1, bg='#183642')
+        space_label.pack()
+        
+    
+            
+        def checar():
+            pedidos = controle.mostrarPedidos()
+                
+            top = Toplevel()
+            top.geometry("500x80")
+            top.title('Atualizar Pagamentos')
+            Label(top, text= f'{pedidos}', font= ("Calisto MT", 15)).place(x=8, y=25)
+            
+            
+
+        checarCred_button= tk.Button(self,
+                                        text='Checar pedidos de crédito',
+                                        command=checar,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=40,
+                                        height=3
+                                        )
+        checarCred_button.pack(pady=5)
+        
+        space_label = tk.Label(self, height =1, bg='#183642')
+        space_label.pack()
+        
+
+        
+
+
+
+        sair_button= tk.Button(self,
+                                        text='Sair',
+                                        command=sair,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=40,
+                                        height=3
+                                        )
+        sair_button.pack(pady=5)
+
+        space_label = tk.Label(self, height =1, bg='#183642')
+        space_label.pack()
+         

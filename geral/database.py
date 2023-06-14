@@ -268,7 +268,7 @@ class Banquinho:
 
         return cliente['saldo']
     
-    def trocaSenha(key, novaSenha):
+    def trocaSenha(self, key, novaSenha):
 
         with open("senhas.json", "r") as arquivo:
             senhas = json.load(arquivo)

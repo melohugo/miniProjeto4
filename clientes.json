@@ -5,7 +5,7 @@
         "cpf_cnpj": "123456789",
         "endereco": "Rua A",
         "telefone": "1234567890",
-        "saldo": -3900.0,
+        "saldo": -300.0,
         "operacoes": []
     },
     {
@@ -14,43 +14,7 @@
         "cpf_cnpj": "581321",
         "endereco": "Rua B",
         "telefone": "6782974920",
-        "saldo": 0.0,
-        "operacoes": []
-    },
-    {
-        "nome": "Joao",
-        "tipo": "Pessoa Fisica",
-        "cpf_cnpj": "123456789",
-        "endereco": "Rua A",
-        "telefone": "1234567890",
-        "saldo": 0.0,
-        "operacoes": []
-    },
-    {
-        "nome": "Joaquim",
-        "tipo": "Pessoa Fisica",
-        "cpf_cnpj": "581321",
-        "endereco": "Rua B",
-        "telefone": "6782974920",
-        "saldo": 0.0,
-        "operacoes": []
-    },
-    {
-        "nome": "vitao",
-        "tipo": "pessoa fisica",
-        "cpf_cnpj": "88889999",
-        "endereco": "rua do vitao",
-        "telefone": "561489987",
-        "saldo": 600.0,
-        "operacoes": []
-    },
-    {
-        "nome": "",
-        "tipo": "",
-        "cpf_cnpj": "",
-        "endereco": "",
-        "telefone": "",
-        "saldo": 0.0,
+        "saldo": 2200.0,
         "operacoes": []
     }
 ]

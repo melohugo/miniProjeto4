@@ -6,21 +6,5 @@
     {
         "cpf_cnpj": "581321",
         "senha": "1234"
-    },
-    {
-        "cpf_cnpj": "123456789",
-        "senha": "senha123"
-    },
-    {
-        "cpf_cnpj": "581321",
-        "senha": "1234"
-    },
-    {
-        "cpf_cnpj": "88889999",
-        "senha": "1234"
-    },
-    {
-        "cpf_cnpj": "",
-        "senha": ""
     }
 ]
