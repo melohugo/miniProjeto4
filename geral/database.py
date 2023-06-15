@@ -292,4 +292,7 @@ class Banquinho:
 
                 return pedido
 
+        with open ("pedidosDeCredito.json", 'w') as arquivo:
+            json.dump(pedidosList, arquivo, indent = 4)
+            
         return 0

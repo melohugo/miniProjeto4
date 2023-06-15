@@ -4,7 +4,7 @@
     "cpf_cnpj": "123456789",
     "endereco": "Rua A",
     "telefone": "1234567890",
-    "saldo": 4095.0,
+    "saldo": 3095.0,
     "operacoes": [
         {
             "tipo": "Deposito",
@@ -22,10 +22,6 @@
             "tipo": "Pagamento programado",
             "valor": 5.0,
             "data": "31/02 pago"
-        },
-        {
-            "tipo": "Deposito",
-            "valor": 1000.0
         },
         {
             "tipo": "Deposito",

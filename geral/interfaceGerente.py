@@ -76,7 +76,7 @@ class ManagerPage(tk.Frame):
             Idgerente = Id.get()
             
             if "123" == Idgerente and "ger3nte" == senha: 
-               Idgerente.set('')
+               
                minhaSenha.set('')
                senhaErrada_label['text']=''
                controller.show_frame('GerenciaPage')

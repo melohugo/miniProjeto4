@@ -7,17 +7,10 @@
         "pedidoDeCredito": 1000.0
     },
     {
-        "nome": "Celia",
-        "tipo": "Pessoa Fisica",
-        "cpf_cnpj": "581321",
-        "saldo": 700.0,
-        "pedidoDeCredito": 1000000.0
-    },
-    {
-        "nome": "Joao",
-        "tipo": "Pessoa Fisica",
-        "cpf_cnpj": "123456789",
-        "saldo": 2095.0,
-        "pedidoDeCredito": 690.0
+        "nome": "hugo boss",
+        "tipo": "empresa",
+        "cpf_cnpj": "987654321",
+        "saldo": 0.0,
+        "pedidoDeCredito": 256.0
     }
 ]
