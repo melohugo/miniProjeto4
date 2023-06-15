@@ -49,3 +49,7 @@ class Controle:
     
     def atualizarSenha(self, key, novaSenha):
         self.banquinho.trocaSenha(key, novaSenha)
+
+    def atualizarCredito(self, key):
+        valor = self.banquinho.verificarCredito(key)
+        deposito = self.depositar(valor, key)

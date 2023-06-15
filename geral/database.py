@@ -257,7 +257,7 @@ class Banquinho:
     def pedidosDeCredito(self):
 
         with open("pedidosDeCredito.json", "r") as arquivo:
-            pedidos = json.load(arquivo)
+            pedidos = json.dumps(arquivo, indent = 4)
 
         return pedidos
 
@@ -279,3 +279,13 @@ class Banquinho:
 
         with open("senhas.json", "w") as arquivo:
             json.dump(senhas, arquivo, indent = 4)
+
+    def verificarCredito(self, key):
+        with open("pedidosDeCredito.json", "r") as arquivo:
+            pedidosList = json.load(arquivo)
+
+        for pedidos in pedidosList:
+            if pedidos['cpf_cnpj'] == key:
+                return pedidos['pedidoDeCredito']
+            else:
+                return 0
