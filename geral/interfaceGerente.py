@@ -75,8 +75,9 @@ class ManagerPage(tk.Frame):
             senha = minhaSenha.get() 
             Idgerente = Id.get()
             
-            if "123" == Idgerente and "ger3nte" == senha:
-          
+            if "123" == Idgerente and "ger3nte" == senha: 
+                
+               minhaSenha.set('')
                senhaErrada_label['text']=''
                controller.show_frame('GerenciaPage')
             else:
@@ -156,7 +157,7 @@ class GerenciaPage(tk.Frame):
             
         
         adicionar_button= tk.Button(self,
-                                        text='Adicionar',
+                                        text='Adicionar Cliente',
                                         command=add,
                                         relief='raised',
                                         borderwidth=3,
@@ -215,7 +216,7 @@ class GerenciaPage(tk.Frame):
             
 
         remover_button= tk.Button(self,
-                                        text='Remover',
+                                        text='Remover Cliente',
                                         command=remover,
                                         relief='raised',
                                         borderwidth=3,
@@ -276,7 +277,7 @@ class GerenciaPage(tk.Frame):
                 top.title('Senha Att')
                 Label(top, text= 'Senha atualizada com sucesso!', font= ("Calisto MT", 15)).place(x=8, y=25)
                 
-                caixa_entrada_valor.pack_forget()
+                caixa_entrada.pack_forget()
                 button.pack_forget()
                 
             button = tk.Button(self,
@@ -484,7 +485,7 @@ class AddPage(tk.Frame):
                   
             top = Toplevel()
             top.geometry("280x75")
-            top.title('Credito')
+            top.title('Novo Cliente')
             Label(top, text= f'Cliente {novoNome} foi adicionado', font= ("Calisto MT", 15)).place(x=8, y=25)
             
             controller.show_frame('GerenciaPage')
@@ -528,7 +529,7 @@ class Pag3(tk.Frame):
         
         def sair():
             controller.show_frame('StartPage')
-            os.remove("clienteAtual.json")
+            
             
         def atualizar():
              
@@ -602,6 +603,55 @@ class Pag3(tk.Frame):
         
         space_label = tk.Label(self, height =1, bg='#183642')
         space_label.pack()
+        
+        
+        def attCred():
+            cpfCliente = tk.StringVar()
+            caixa_entrada_valor = tk.Entry(self, 
+                                       textvariable= cpfCliente,
+                                       font=('Calisto MT',12),
+                                       width=22
+                                       )
+        
+            caixa_entrada_valor.focus_set()
+            caixa_entrada_valor.pack(ipady = 7)
+            
+            def creditar():
+                cpf = cpfCliente.get()
+                controle.atualizarCredito(cpf)
+                
+                top = Toplevel()
+                top.geometry("500x80")
+                top.title('Conceder Credito')
+                Label(top, text= f'Credito concedido ao cliente {cpf}', font= ("Calisto MT", 15)).place(x=8, y=25)
+                
+                caixa_entrada_valor.pack_forget()
+                button.pack_forget()
+            
+            button = tk.Button(self,
+                                
+                                    bg = "#cbc5ea",
+                                    text= 'Enter',
+                                    command = creditar,
+                                    relief='raised',
+                                    borderwidth= 3,
+                                    width = 22,
+                                    height = 2)
+            button.pack(pady=10)
+            
+        attCredito_button= tk.Button(self,
+                                        text='Conceder Crédito',
+                                        command=attCred,
+                                        relief='raised',
+                                        borderwidth=3,
+                                        width=40,
+                                        height=3
+                                        )
+        attCredito_button.pack(pady=5)
+
+        space_label = tk.Label(self, height =1, bg='#183642')
+        space_label.pack()
+            
         
 
         

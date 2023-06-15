@@ -233,6 +233,7 @@ class MenuPage(tk.Frame):
                 top.title('Deposito')
                 Label(top, text= f'Deposito de R${valor} reais', font= ("Calisto MT", 15)).place(x=8, y=25)
                 
+                
                 caixa_entrada_valor.pack_forget()
                 button.pack_forget()
                 

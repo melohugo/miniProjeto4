@@ -1,0 +1,20 @@
+[
+    {
+        "nome": "Joao",
+        "tipo": "Pessoa Fisica",
+        "cpf_cnpj": "123456789",
+        "endereco": "Rua A",
+        "telefone": "1234567890",
+        "saldo": 4095.0,
+        "operacoes": []
+    },
+    {
+        "nome": "Celia",
+        "tipo": "Pessoa Fisica",
+        "cpf_cnpj": "581321",
+        "endereco": "rua 50",
+        "telefone": "24623858",
+        "saldo": 700.0,
+        "operacoes": []
+    }
+]
