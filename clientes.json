@@ -1,0 +1,11 @@
+[
+    {
+        "nome": "Joao",
+        "tipo": "Pessoa Fisica",
+        "cpf_cnpj": "123456789",
+        "endereco": "Rua A",
+        "telefone": "1234567890",
+        "saldo": 6165.0,
+        "operacoes": []
+    }
+]

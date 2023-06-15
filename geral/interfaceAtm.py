@@ -401,14 +401,14 @@ class Pag2(tk.Frame):
             valor_label.pack(pady = 8)
             
             valorPag = tk.StringVar()
-            caixa_entrada_valor = tk.Entry(self, 
+            caixa_entrada = tk.Entry(self, 
                                        textvariable= valorPag,
                                        font=('Calisto MT',12),
                                        width=22
                                        )
         
-            caixa_entrada_valor.focus_set()
-            caixa_entrada_valor.pack(ipady = 7)
+            caixa_entrada.focus_set()
+            caixa_entrada.pack(ipady = 7)
             
             space_label = tk.Label(self, height =1, bg = '#183642')
             space_label.pack()
@@ -445,6 +445,9 @@ class Pag2(tk.Frame):
                 top.title('Pag Programado')
                 Label(top, text= f'Pagamento de R${valor},00 reais para o dia {dia}', font= ("Calisto MT", 15)).place(x=8, y=25)
                 
+                valor_label.pack_forget()
+                dia_label.pack_forget()
+                caixa_entrada.pack_forget()
                 caixa_entrada_valor.pack_forget()
                 button.pack_forget()
                 

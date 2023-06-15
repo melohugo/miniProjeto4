@@ -548,9 +548,12 @@ class Pag3(tk.Frame):
                 controle.atualizarPagamento(data)
                 
                 top = Toplevel()
-                top.geometry("275x75")
+                top.geometry("325x75")
                 top.title('Atualizar Pagamentos')
                 Label(top, text= f'Pagamentos do dia {data} atualizados', font= ("Calisto MT", 15)).place(x=8, y=25)
+                
+                caixa_entrada.pack_forget()
+                button.pack_forget()
                 
                 
             
@@ -585,7 +588,7 @@ class Pag3(tk.Frame):
             pedidos = controle.mostrarPedidos()
                 
             top = Toplevel()
-            top.geometry("500x80")
+            top.geometry("300x500")
             top.title('Atualizar Pagamentos')
             Label(top, text= f'{pedidos}', font= ("Calisto MT", 15)).place(x=8, y=25)
             
