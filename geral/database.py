@@ -288,11 +288,12 @@ class Banquinho:
         for pedidos in pedidosList:
             if pedidos['cpf_cnpj'] == key:
                 pedido = pedidos['pedidoDeCredito']
+                
+                ##atualiza arquivo##
                 pedidosList.remove(pedidos)
-
+                with open("pedidosDeCredito.json", 'w') as arquivo:
+                    json.dump(pedidosList, arquivo, indent = 4)
+         
                 return pedido
 
-        with open ("pedidosDeCredito.json", 'w') as arquivo:
-            json.dump(pedidosList, arquivo, indent = 4)
-            
         return 0
