@@ -1,6 +1,5 @@
 # miniProjeto4
 
-# miniProjeto4
 Alunos:
 Cecília Quaresma – 221021901
 Hugo Queiroz – 221021993
