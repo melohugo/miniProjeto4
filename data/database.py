@@ -255,19 +255,18 @@ class Banquinho:
             dados = json.load(arquivo)
 
         cpf_cnpj = dados['cpf_cnpj']
-        
-        ##removendo arquivo e retornando dado##
-        os.remove("data/.clienteAtual.json")
 
         return cpf_cnpj
 
 
     def pedidosDeCredito(self):
 
-        with open("pedidosDeCredito.json", "r") as arquivo:
+        with open("data/pedidosDeCredito.json", "r") as arquivo:
             pedidos = json.load(arquivo)
 
-        return pedidos
+        pedidosList = json.dumps(pedidos, indent = 4)
+
+        return(pedidosList)
 
     def saldo(self, key):
 
@@ -281,10 +280,29 @@ class Banquinho:
         with open("data/.senhas.json", "r") as arquivo:
             senhas = json.load(arquivo)
 
+        ##busca cpf e atualiza arquivo##
         for dados in senhas:
             if dados['cpf_cnpj'] == key:
                 dados['senha'] = novaSenha
 
         with open("data/.senhas.json", "w") as arquivo:
             json.dump(senhas, arquivo, indent = 4)
+
+    def verificarCredito(self, key):
+        with open("data/pedidosDeCredito.json", "r") as arquivo:
+            pedidosList = json.load(arquivo)
+        
+        ##busca cpf e retorna o valor, se não retorna 0###
+        for pedidos in pedidosList:
+            if pedidos['cpf_cnpj'] == key:
+                pedido = pedidos['pedidoDeCredito']
+                
+                ##atualiza arquivo##
+                pedidosList.remove(pedidos)
+                with open("data/pedidosDeCredito.json", 'w') as arquivo:
+                    json.dump(pedidosList, arquivo, indent = 4)
+         
+                return pedido
+
+        return 0
             

@@ -4,7 +4,8 @@ from modulos.controler import Controle
 controle = Controle()
 
 # Teste da função addPessoa
-controle.addPessoa("João", "123456789", "Rua A", "1234567890", "senha123", "Pessoa Física")
+controle.addPessoa("Joao", "123456789", "Rua A", "1234567890", "senha123", "Pessoa Fisica")
+controle.addPessoa("Joaquim", "581321", "Rua B", "6782974920", "1234", "Pessoa Fisica")
 
 # Teste da função verifCpf
 cpf_valido = "123456789"
@@ -30,14 +31,21 @@ else:
 # Teste da função depositar
 controle.depositar(200.00, "123456789")
 
-#Teste da função sacar com saldo suficiente
+#Teste da função mostrar saldo
+saldo = controle.mostrarSaldo("123456789")
+print(saldo)
+
+# Teste da função solicitar credito
+controle.solCredito(1000.00, "123456789")
+
+#Teste da função atualizar credito
+controle.atualizarCredito("123456789")
+
+#Teste da função sacar
 if controle.sacar(100.00, "123456789"):
     print("Saque efetuado com sucesso")
 else:
     print("Saldo insuficiente")
-
-# Teste da função solicitar credito
-controle.solCredito(1000000.00, "123456789")
 
 #Teste da função pagamento programado
 controle.programarPag(5.00, "31/02", "123456789")
@@ -51,19 +59,7 @@ if controle.rmPessoa("123456789"):
 else:
     print("Operação invalida")
 
-controle.sacar(95.00, "123456789")
-
-if controle.rmPessoa("123456789"):
+if controle.rmPessoa("581321"):
     print("Cliente deletado do banco de dados")
 else:
     print("Operação invalida")
-
-#Teste da função atualizar cliente
-controle.clienteAtual("000000000")
-
-#Teste da função mostrar cliente atual
-cpf = controle.mostraClienteAtual()
-print(cpf)
-
-# Teste da função listar
-#controle.listar("123456789")

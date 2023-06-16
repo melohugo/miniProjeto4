@@ -34,18 +34,22 @@ class Controle:
 
     def atualizarPagamento(self, data):
         self.banquinho.atualizarPagProg(data)
-
+        
     def clienteAtual(self, key):
         self.banquinho.atualizaCpf(key)
 
     def mostraClienteAtual(self):
         return self.banquinho.checaCpf()
-
+    
     def mostrarPedidos(self):
         return self.banquinho.pedidosDeCredito()
     
     def mostrarSaldo(self, key):
         return self.banquinho.saldo(key)
-
+    
     def atualizarSenha(self, key, novaSenha):
         self.banquinho.trocaSenha(key, novaSenha)
+
+    def atualizarCredito(self, key):
+        valor = self.banquinho.verificarCredito(key)
+        deposito = self.depositar(valor, key)
