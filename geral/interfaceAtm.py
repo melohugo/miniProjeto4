@@ -43,6 +43,7 @@ class StartPage(tk.Frame):
         self.controller = controller
 
         self.controller.title('Banco HCQ')
+        self.controller.state('zoomed')
         
         
 
