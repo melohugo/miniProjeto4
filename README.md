@@ -18,4 +18,4 @@ Diagrama de Classes                                            x
 Diagrama de Objetos                                            x
 Requisitos de projeto                                          x
 
-Ao rodar o "teste.py" as funções serão implementadas e exibidas no terminal, a 'interfaceAtm.py' gera a interface plena. É possível interagir com a interface a partir dos clientes criados no teste, ou acessar o menu do Gerente para adicionar novos usuários.
+Ao rodar o "teste.py" as funções serão implementadas e exibidas no terminal, a 'interfaceAtm.py' gera a interface plena. É possível interagir com a interface a partir dos clientes criados no teste, ou acessar o menu do Gerente para adicionar novos usuários. O ID do gerente é 123 e a senha é ger3nte.
