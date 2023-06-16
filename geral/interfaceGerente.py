@@ -14,7 +14,7 @@ class ManagerPage(tk.Frame):
         self.controller = controller
 
         self.controller.title('Banco CHQ')
-        self.controller.state('zoomed')
+          
 
         heading_label = tk.Label(self,
                                  text= 'Banco HCQ',
@@ -129,7 +129,7 @@ class GerenciaPage(tk.Frame):
         self.controller = controller
 
         self.controller.title('Banco CHQ')
-        self.controller.state('zoomed')
+          
 
         heading_label = tk.Label(self,
                                  text= 'Banco HCQ',
@@ -239,14 +239,14 @@ class GerenciaPage(tk.Frame):
             cpf_label.pack(pady = 5)
             
             cpfCliente= tk.StringVar()
-            caixa_entrada = tk.Entry(self, 
+            caixa_entrada1 = tk.Entry(self, 
                                        textvariable=cpfCliente ,
                                        font=('Calisto MT',12),
                                        width=22
                                        )
         
-            caixa_entrada.focus_set()
-            caixa_entrada.pack(ipady = 5)
+            caixa_entrada1.focus_set()
+            caixa_entrada1.pack(ipady = 5)
             
             novaSenha_label = tk.Label(self, 
                                text='Nova Senha',
@@ -277,8 +277,11 @@ class GerenciaPage(tk.Frame):
                 top.title('Senha Att')
                 Label(top, text= 'Senha atualizada com sucesso!', font= ("Calisto MT", 15)).place(x=8, y=25)
                 
+                caixa_entrada1.pack_forget()
                 caixa_entrada.pack_forget()
                 button.pack_forget()
+                cpf_label.pack_forget()
+                novaSenha_label.pack_forget()
                 
             button = tk.Button(self,
                                 
@@ -329,7 +332,7 @@ class AddPage(tk.Frame):
         self.controller = controller
 
         self.controller.title('Banco CHQ')
-        self.controller.state('zoomed')
+          
         
         heading_label = tk.Label(self,
                                  text= 'Banco HCQ',
